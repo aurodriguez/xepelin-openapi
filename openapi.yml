@@ -1,0 +1,319 @@
+openapi: 3.0.2
+
+info:
+  $ref: ./info.yml
+
+servers:
+  - url: https://api.belvo.com
+    description: Production
+  - url: https://sandbox.belvo.com
+    description: Sandbox
+
+x-tagGroups:
+  - name: Core Endpoints
+    tags:
+      - Institutions
+      - Links
+  - name: Banking and Gig API
+    tags:
+      - Banking and Gig API introduction
+      - Accounts
+      - Transactions
+      - Balances
+      - Owners
+      - Statements
+      - Incomes (BETA)
+  - name: Fiscal API
+    tags:
+      - Fiscal API introduction
+      - Invoices
+      - Tax compliance status
+      - Tax returns
+      - Tax status
+
+security:
+  - basicAuth: []
+
+components:
+  $ref: ./components.yml
+
+tags:
+  - name: Banking and Gig API introduction
+    x-displayName: Introduction
+    description: |
+      Use our Banking and Gig API product to access account, balance, owner, bank statement, as well as transaction data from banking and gig institutions.
+
+      | API Endpoint | Description | Supported institutions |
+      |-----------|-------|---|
+      | `Accounts` | Get information about your customer's bank accounts. |Banking and Gig|
+      | `Balances` | Get the balance at the end of each day for your customer's bank accounts. |Banking|
+      | `Owners` | Get the details of an account owner. |Banking and Gig|
+      | `Statements` | Get a list of statements with bank transactions and metadata. |Banking|
+      | `Transactions` | Get a list of bank transactions with metadata. |Banking and Gig|
+
+
+  - name: Institutions
+    description: | 
+      An `Institution` is an entity that Belvo can access information from. It can be a:
+
+        - bank institution, such as Banamex retail banking or HSBC business banking.
+        - fiscal institution, such as the Servicio de Administración Tributaria (SAT) in Mexico.
+        - gig institution, such as Uber or Rappi.
+
+      You can see a complete list of banking institutions by either consulting our [Institutions article](https://developers.belvo.com/docs/institution) or making a List call to this endpoint.
+
+  - name: Links
+    description: |
+      A `Link` is a set of credentials associated to a end-user access to an `Institution`.
+      An example would be the username and password used to log in to an online banking platform.
+      You will need to register a `Link` before accessing information from that specific end-user, such as account or transaction details.
+
+      You have the possibility to register two types of links:
+
+      ### Single links
+
+      Single links are used to perform ad hoc data access to accounts, owners, transactions, and so on. For example, you can use it when you want to do an underwriting process to assess risk before lending money.
+      For single links, you have to perform POST calls to an institution **every time** you want to access fresh data.
+
+      ### Recurrent links (default)
+
+      With recurrent links, Belvo automatically refreshes information daily and notifies you via [webhook](https://developers.belvo.com/docs/webhooks) so you always have up-to-date data. Then, when you receive the webhook, you can use GET requests to the List or Detail endpoints to instantly access up-to-date information, without needing to connect to the institution.
+
+      You can also make POST calls directly to the institution, as with single links, as soon as the link is created. However, to make GET requests, you need to wait until you receive the webhook event. Otherwise, you will receive responses with empty data fields.
+
+      ✅ We recommend using our [Connect Widget](https://developers.belvo.com/docs/connect-widget) to handle link creation and link status updates.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`access_mode`|`=`|
+      |`created_by`|`not_in`|
+      |`id`|`=`, `in`|
+      |`institution`|`=`, `in`|
+      |`refresh_rate`|`=`|
+      |`status`|`=`, `in`|
+
+
+  - name: Accounts
+    description: |
+      An `Account` is the representation of a bank account inside a financial or gig institution. An end user can have several `Accounts` inside each `Link`. For example, one `Link` can have on checking account, several credit cards, and even loan or investment accounts.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`balance__available`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`balance__current`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`bank_product_id`|`=`|
+      |`category`|`=`, `in`|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`currency`|`=`, `in`|
+      |`id`|`=`, `in`|
+      |`institution`|`=`, `in`|
+      |`internal_identification`|`=`|
+      |`link`|`=`, `in`|
+      |`name`|`=`, `icontains`|
+      |`number`|`=`, `in`|
+      |`public_identification_name`|`=`|
+      |`public_identification_value`|`=`|
+      |`type`|`=`, `in`|
+
+      
+  - name: Transactions
+    description: |
+      A `Transaction` contains the detailed information of each movement inside an `Account`.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`account`|`=`, `in`|
+      |`account__balance__available`|`=`, `lt`, `lte`, `range`|
+      |`account__balance__current`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`account_type`|`=`, `in`|
+      |`accounting_date`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`amount`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`credit_card_data__bill_name`|`=`, `in`|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`currency`|`=`, `in`|
+      |`id`|`=`, `in`|
+      |`institution`|`=`, `in`|
+      |`link`|`=`, `in`|
+      |`reference`|`=`, `in`|
+      |`status`|`=`, `in`|
+      |`type`|`=`, `in`|
+      |`value_date`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+
+  - name: Balances
+    description: |
+      A `Balance` represents the amount of funds available in a checking or savings account over a period of time.
+
+      ℹ️ Please note that the Balances endpoint is:
+
+      - Not supported for gig-economy links.
+      - Not recommeneded for accounts other than checking or savings.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`account`|`=`, `in`|
+      |`account_type`|`=`, `in`|
+      |`balance`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`currency`|`=`, `in`|
+      |`current_balance`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`id`|`=`, `in`|
+      |`institution`|`=`, `in`|
+      |`link`|`=`, `in`|
+      |`value_date`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+
+
+  - name: Owners
+    description: | 
+      An `Owner` represents the person who has access to a `Link` and is the owner of all the `Accounts` inside the `Link`.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`email`|`=`|
+      |`id`|`=`, `in`|
+      |`link`|`=`, `in`|
+
+  - name: Statements
+    description: | 
+      A `Statement` contains a summary of monthly `Transactions` inside an `Account`.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`account`|`=`, `in`|
+      |`account_category`|`=`, `in`|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`final_balance`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`id`|`=`, `in`|
+      |`institution`|`=`, `in`|
+      |`link`|`=`, `in`|
+      |`period_end_date`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`period_start_date`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`previous_balance`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`total_inflow_amount`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`total_outflow_amount`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`total_inflow_transactions`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`total_outflow_transactions`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+
+  - name: Incomes (BETA)
+    description:  |
+      Use the Incomes endpoint to gather insights on an account's income sources for the past 365 days. The endpoint is particularly useful when you want to verify a person's income.
+
+      ℹ️ The Incomes resource is **only** available for Checking and Savings Accounts associated with banking links.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`account`|`=`, `in`|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`id`|`=`, `in`|
+
+  - name: Fiscal API introduction
+    x-displayName: Introduction
+    description:  |
+      Use our **Fiscal API** product to access invoices, tax compliance statuses, tax returns, and tax statuses from the fiscal authority in a given country.
+
+      | Resource | Description |
+      |-----------|-------|
+      | `Invoices` | Get all the information about the invoices sent and received by a person or a business that have been certified by the tax authority. |
+      | `Tax compliance status`| Get information about whether a person or business is complying to their tax obligations.|
+      | `Tax returns` | Get all the information about the tax returns sent every year to the tax authority by a person or a business. |
+      | `Tax status` | Get all the information about the tax situation of a person or a business. |
+
+      ℹ️ You can only access this information with `fiscal` links.
+    
+  - name: Invoices
+    description:   |
+      An Invoice is the representation of an electronic invoice, that can be received or sent, by a business or an individual and has been uploaded to the fiscal institution website. Multiple INFLOW (invoice received) and OUTFLOW (invoice sent) invoices can be retrieved inside each link coming from a fiscal institution.
+
+      If you want to see example responses for different invoice types, just click the drop-down menu under **Response Samples**.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`id`|`=`, `in`|
+      |`invoice_date`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`invoice_identification`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`link`|`=`, `in`|
+      |`status`|`=`, `in`|
+      |`total_amount`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`type`|`=`, `in`|
+      
+  - name: Tax returns
+    description:  |
+      A Tax return is the representation of the tax return document sent every year by a person or a business to the tax authority in the country.
+
+      The tax return data structure will be different depending on if it is related to a person or a business (you will find examples for both in the endpoints below).
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`ejercicio`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`id`|`=`, `in`|
+      |`link`|`=`, `in`|
+      |`tipo_declaracion`|`=`, `in`|
+
+  - name: Tax status
+    description:  |
+      A Tax status - or _Constancia de Situación Fiscal_ - is the representation of the tax situation of a person or a business provided by the tax authority in the country.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`collected_at`|`=`, `gt`, `gte`, `lt`, `lte`, `range`|
+      |`id`|`=`, `in`|
+      |`link`|`=`, `in`|
+
+
+  - name: Tax compliance status
+    description:  |
+      A Tax compliance status gives an indication about whether a person or business is complying with their tax obligations at the moment of the request. The information is extracted from SAT's _Opinion de cumplimiento de Obligaciones Fiscales_ document.
+
+      **Filterable fields**
+
+      Please see the table below for an alphabetized list of fields that you can filter your responses by. For more information on how to use filters, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) article.
+
+      |Field| Available Filters|
+      |---|---|
+      |`id`|`=`, `in`|
+      |`link`|`=`, `in`|
+
+paths:
+  $ref: ./paths.yml#/paths
