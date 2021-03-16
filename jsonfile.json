@@ -13,7 +13,7 @@
         "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
         }, 
       "x-logo": {
-         "url": "https://redocly.github.io/redoc/petstore-logo.png",
+         "url": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa0%2FLed_Zeppelin_logo.png&imgrefurl=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3ALed_Zeppelin_logo.png&tbnid=drnWRrMKv6StUM&vet=12ahUKEwjjk6_owbXvAhXGArkGHWS0AfEQMygAegUIARCmAQ..i&docid=B__Ch2T22V150M&w=576&h=196&q=png%20zeppelin%20logo&ved=2ahUKEwjjk6_owbXvAhXGArkGHWS0AfEQMygAegUIARCmAQ",
          "backgroundColor": "#FFFFFF",
          "altText": "Petstore logo"
        }
