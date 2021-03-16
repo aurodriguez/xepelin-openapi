@@ -18,8 +18,19 @@
          "altText": "Petstore logo"
        }
   },
+ 
   "host":"petstore.swagger.io",
   "basePath":"/v2",
+  "x-tagGroups": [
+   {
+     "name": "User Management",
+     "tags": ["Users", "API keys", "Admin"]
+   },
+   {
+     "name": "Statistics",
+     "tags": ["Main Stats", "Secondary Stats"]
+   }
+ ],
   "tags":[
      {
         "name":"pet",
