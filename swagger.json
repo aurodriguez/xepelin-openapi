@@ -20,14 +20,13 @@
       También puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
       El objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.      
       
-      # OpenAPI Specification\nThis API is documented in **OpenAPI format** and is based on\n
-      [Petstore sample](http://petstore.swagger.io/) provided by [swagger.io](http://swagger.io) team.\n
-      It was **extended** to illustrate features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)\ntool and [ReDoc](https://github.com/Redocly/redoc) documentation. 
-      In addition to standard\nOpenAPI syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).\n\n
+      # Autentificación\n
+
+      # Ambiente\n
+
+      Xepelin ofrece actualmente dos entornos. 
+      Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.\n",
       
-      # Cross-Origin Resource Sharing\nThis API features Cross-Origin Resource Sharing (CORS) implemented in compliance with  [W3C spec](https://www.w3.org/TR/cors/).\n
-      And that allows cross-domain communication from the browser.\nAll responses have a wildcard same-origin which makes them completely public and accessible to everyone, 
-      including any code on any site.\n",
       "version": "1.0.0",
       "title":"Xepelin API Corps",
       "termsOfService": "http://swagger.io/terms/",
