@@ -11,7 +11,12 @@
      "license":{
         "name":"Apache 2.0",
         "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
-     }
+        }, 
+      "x-logo": {
+         "url": "https://redocly.github.io/redoc/petstore-logo.png",
+         "backgroundColor": "#FFFFFF",
+         "altText": "Petstore logo"
+       }
   },
   "host":"petstore.swagger.io",
   "basePath":"/v2",
