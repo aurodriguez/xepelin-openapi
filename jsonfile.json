@@ -895,6 +895,7 @@
      }
   },
   "securityDefinitions":{
+     "basic_auth": [],
      "api_key":{
         "type":"apiKey",
         "name":"api_key",
