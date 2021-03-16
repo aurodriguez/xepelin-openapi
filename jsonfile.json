@@ -21,7 +21,30 @@
  
   "host":"petstore.swagger.io",
   "basePath":"/v2",
+
+  "x-tagGroups": [
+   {
+     "name": "Introduction",
+     "tags": ["env", "auth"]
+   },
+   {
+     "name": "Endpoints",
+     "tags": ["pet", "store", "user"]
+   }
+ ],
   "tags":[
+     {
+      "name": "env",
+      "description": "Environments of API Corps.",
+      "x-traitTag": true,
+      "x-displayName": "Environment"
+     },
+     {
+      "name": "auth",
+      "description": "Authentication of API Corps.",
+      "x-traitTag": true,
+      "x-displayName": "Authentication"
+     },
      {
         "name":"pet",
         "description":"Everything about your Pets",
