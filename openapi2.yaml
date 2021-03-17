@@ -1,10 +1,10 @@
 openapi: 3.0.0
 
 servers:
-  - url: https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/
-    description: Default server
   - url:  https://vzx7es13n7.execute-api.sa-east-1.amazonaws.com/staging/
     description: Sandbox server
+  - url: https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/
+    description: Production server
 
 info:
   description: |
