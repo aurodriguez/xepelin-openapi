@@ -40,10 +40,12 @@ tags:
     x-displayName: Ambiente
     description: |
       Xepelin ofrece actualmente dos entornos. Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.
+      
       | Ambiente | Proposito | URL |
       |-----------|-------|---|
       | `Sandbox` | Get information about your customer's bank accounts. |Banking and Gig|
       | `Produccion` | Get the balance at the end of each day for your customer's bank accounts. |Banking|
+      
   - name: authentification
     description: Codigos y claves de autentificacion.
   - name: response_codes
