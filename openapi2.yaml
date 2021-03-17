@@ -184,6 +184,8 @@ paths:
             }
     
         # end post
+    
+    # start put
     put:
       tags:
         - pet
@@ -191,12 +193,18 @@ paths:
       description: ''
       operationId: updatePet
       responses:
+        '200':
+          description: Invoice ID Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceCreatedResponse'
         '400':
-          description: Invalid ID supplied
+          description: Bad Request
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Invalid ID supplied
+        '500':
+          description: Internal Server Error
       security:
         - petstore_auth:
             - 'write:pets'
@@ -709,7 +717,7 @@ components:
         pet:
           oneOf:
             - $ref: '#/components/schemas/Pet'
-            - $ref: '#/components/schemas/Tag'
+            # - $ref: '#/components/schemas/Tag'
         username:
           description: User supplied username
           type: string
