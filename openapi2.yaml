@@ -113,7 +113,7 @@ paths:
     post:   # start post
       tags:
         - pet
-      summary: Enviar nuevo documento.
+      summary: Enviar nuevo documento
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
         de un nuevo documento. 
@@ -129,15 +129,20 @@ paths:
         $ref: '#/components/requestBodies/Pet'
 
       responses:
-        '405':
-          description: Invalid input
-        # '200':
-        #   description: successful operation
-        #   content:
-        #     application/json:
-        #       schema:
-        #         $ref: '#/components/schemas/ApiResponse'
-  
+        '200':
+          summary: Invoice ID Created
+          description: |
+          A continuación se muestra un ejemplo de mensaje síncrono 
+          de respuesta que se enviará al momento de informar sobre un nuevo documento. 
+          Se debe considerar que se recibirá uno por cada documento informado.
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          # '405':
+          #   description: Invalid input
+
       security:   # authentification
         - petstore_auth:   
             - 'write:pets'
@@ -988,8 +993,8 @@ components:
         #   description: Type of a pet
         #   type: string
 
-      xml:
-        name: Pet
+      # xml:
+      #   name: Pet
 
     # Tag
     Tag:
