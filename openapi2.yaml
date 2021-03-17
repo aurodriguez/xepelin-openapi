@@ -6,18 +6,16 @@ servers:
     description: Sandbox server
 info:
   description: |
-    This is a sample server Petstore server.
-    You can find out more about Swagger at
-    [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).
-    For this sample, you can use the api key `special-key` to test the authorization filters.
+    Encuentra mas informacion sobre la Aplicacion para corporativos en 
+    [http://corps.xepelin.com](http://corps.xepelin.com) y sobre Xepelin 
+    en [http://www.xepelin.com](http://www.xepelin.com).
 
-    # Introducción
-    Xepelin cuenta con una API para clientes corporativos que permite a las empresas acceder a la información de las facturas, 
+    \n\nXepelin cuenta con una API para clientes corporativos que permite a las empresas acceder a la información de las facturas, 
     operaciones de factoring y confirming de forma segura y ágil. A través de nuestra API, 
     los desarrolladores pueden acceder a **Endpoint Facturas Externas**, 
     que te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores.
-    \nTambién puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
-    \nEl objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.
+    \n\nTambién puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
+    \n\nEl objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.
 
   version: 1.0.0
   title: Xepelin API Corps
@@ -45,7 +43,7 @@ tags:
       |-----------|-------|---|
       | `Sandbox` | Get information about your customer's bank accounts. |Banking and Gig|
       | `Produccion` | Get the balance at the end of each day for your customer's bank accounts. |Banking|
-      
+
   - name: authentification
     description: Codigos y claves de autentificacion.
   - name: response_codes
