@@ -69,10 +69,10 @@ tags:
       | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
       | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
 
-  - name: error_handling
-    x-displayName: Manejo de Errores
-    description: |
-     Manejo de errores.
+  # - name: error_handling
+  #   x-displayName: Manejo de Errores
+  #   description: |
+  #    Manejo de errores.
   - name: documents
     x-displayName: Documentos
     description: |
@@ -89,7 +89,7 @@ x-tagGroups:
       - environment
       - authentification
       - response_codes
-      - error_handling
+      # - error_handling
   - name: General
     tags:
       - documents
@@ -99,7 +99,7 @@ x-tagGroups:
       - user
 
 paths:
-  /pet:
+  /documents:
     parameters:
       - name: cookieParam
         in: cookie
