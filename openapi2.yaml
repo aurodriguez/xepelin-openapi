@@ -77,10 +77,11 @@ tags:
     x-displayName: Documentos
     description: |
      Envio y modificacion de documentos.
-  - name: store
-    description: Access to Petstore orders
   - name: user
     description: Operations about user
+  # - name: store
+  #   description: Operations about store
+
 
 x-tagGroups:
   - name: Informacion General
@@ -93,7 +94,7 @@ x-tagGroups:
   - name: General
     tags:
       - pet
-      - store
+      # - store
   - name: User Management
     tags:
       - user
@@ -127,8 +128,8 @@ paths:
       responses:
         '405':
           description: Invalid input
-     
-          security:   # authentification
+  
+      security:   # authentification
         - petstore_auth:   
             - 'write:pets'
             - 'read:pets'
@@ -404,110 +405,111 @@ paths:
         - petstore_auth:
             - 'write:pets'
             - 'read:pets'
-  /store/inventory:
-    get:
-      tags:
-        - store
-      summary: Returns pet inventories by status
-      description: Returns a map of status codes to quantities
-      operationId: getInventory
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
-      security:
-        - api_key: []
-  /store/order:
-    post:
-      tags:
-        - store
-      summary: Place an order for a pet
-      description: ''
-      operationId: placeOrder
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Order'
-        '400':
-          description: Invalid Order
-          content:
-            application/json:
-              example:
-                status: 400
-                message: "Invalid Order"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Order'
-        description: order placed for purchasing the pet
-        required: true
-  '/store/order/{orderId}':
-    get:
-      tags:
-        - store
-      summary: Find purchase order by ID
-      description: >-
-        For valid response try integer IDs with value <= 5 or > 10. Other values
-        will generated exceptions
-      operationId: getOrderById
-      parameters:
-        - name: orderId
-          in: path
-          description: ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 5
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Order'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Order not found
-    delete:
-      tags:
-        - store
-      summary: Delete purchase order by ID
-      description: >-
-        For valid response try integer IDs with value < 1000. Anything above
-        1000 or nonintegers will generate API errors
-      operationId: deleteOrder
-      parameters:
-        - name: orderId
-          in: path
-          description: ID of the order that needs to be deleted
-          required: true
-          schema:
-            type: string
-            minimum: 1
-      responses:
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Order not found
+
+  # /store/inventory:
+  #   get:
+  #     tags:
+  #       - store
+  #     summary: Returns pet inventories by status
+  #     description: Returns a map of status codes to quantities
+  #     operationId: getInventory
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               additionalProperties:
+  #                 type: integer
+  #                 format: int32
+  #     security:
+  #       - api_key: []
+  # /store/order:
+  #   post:
+  #     tags:
+  #       - store
+  #     summary: Place an order for a pet
+  #     description: ''
+  #     operationId: placeOrder
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Order'
+  #           application/xml:
+  #             schema:
+  #               $ref: '#/components/schemas/Order'
+  #       '400':
+  #         description: Invalid Order
+  #         content:
+  #           application/json:
+  #             example:
+  #               status: 400
+  #               message: "Invalid Order"
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Order'
+  #       description: order placed for purchasing the pet
+  #       required: true
+  # '/store/order/{orderId}':
+  #   get:
+  #     tags:
+  #       - store
+  #     summary: Find purchase order by ID
+  #     description: >-
+  #       For valid response try integer IDs with value <= 5 or > 10. Other values
+  #       will generated exceptions
+  #     operationId: getOrderById
+  #     parameters:
+  #       - name: orderId
+  #         in: path
+  #         description: ID of pet that needs to be fetched
+  #         required: true
+  #         schema:
+  #           type: integer
+  #           format: int64
+  #           minimum: 1
+  #           maximum: 5
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Order'
+  #           application/xml:
+  #             schema:
+  #               $ref: '#/components/schemas/Order'
+  #       '400':
+  #         description: Invalid ID supplied
+  #       '404':
+  #         description: Order not found
+  #   delete:
+  #     tags:
+  #       - store
+  #     summary: Delete purchase order by ID
+  #     description: >-
+  #       For valid response try integer IDs with value < 1000. Anything above
+  #       1000 or nonintegers will generate API errors
+  #     operationId: deleteOrder
+  #     parameters:
+  #       - name: orderId
+  #         in: path
+  #         description: ID of the order that needs to be deleted
+  #         required: true
+  #         schema:
+  #           type: string
+  #           minimum: 1
+  #     responses:
+  #       '400':
+  #         description: Invalid ID supplied
+  #       '404':
+  #         description: Order not found
   /user:
     post:
       tags:
@@ -689,6 +691,8 @@ components:
   schemas:
 
     # start schemas
+
+    # ApiResponse
     ApiResponse:
       type: object
       properties:
@@ -716,6 +720,8 @@ components:
                 - aggressive
           required:
             - huntingSkill
+
+    # Category 
     Category:
       type: object
       properties:
@@ -762,10 +768,13 @@ components:
               example: 3.14
           required:
             - honeyPerDay
+    # Id
     Id:
       type: integer
       format: int64
       readOnly: true
+
+    # Order
     Order:
       type: object
       properties:
@@ -800,7 +809,7 @@ components:
       xml:
         name: Order
     
-    # start schema Pet
+    # Pet
     Pet:
       type: object
       required:
@@ -862,6 +871,8 @@ components:
           type: string
       xml:
         name: Pet
+
+    # Tag
     Tag:
       type: object
       properties:
@@ -875,6 +886,8 @@ components:
           minLength: 1
       xml:
         name: Tag
+
+    # User
     User:
       type: object
       properties:
