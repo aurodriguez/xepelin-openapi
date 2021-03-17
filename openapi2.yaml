@@ -19,18 +19,6 @@ info:
     \nTambién puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
     \nEl objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.
 
-    # Ambiente
-    This API is documented in **OpenAPI format** and is based on
-    [Petstore sample](http://petstore.swagger.io/) provided by [swagger.io](http://swagger.io) team.
-    It was **extended** to illustrate features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)
-    tool and [ReDoc](https://github.com/Redocly/redoc) documentation. In addition to standard
-    OpenAPI syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).
-
-    # Autenticación
-    This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with  [W3C spec](https://www.w3.org/TR/cors/).
-    And that allows cross-domain communication from the browser.
-    All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
-
   version: 1.0.0
   title: Xepelin API Corps
   termsOfService: 'http://swagger.io/terms/'
@@ -48,6 +36,20 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
+  - name: environment
+    x-displayName: Ambiente
+    description: |
+      Xepelin ofrece actualmente dos entornos. Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.
+      | Ambiente | Proposito | URL |
+      |-----------|-------|---|
+      | `Sandbox` | Get information about your customer's bank accounts. |Banking and Gig|
+      | `Produccion` | Get the balance at the end of each day for your customer's bank accounts. |Banking|
+  - name: authentification
+    description: Codigos y claves de autentificacion.
+  - name: response_codes
+    description: Codigos de respuesta.
+  - name: error_handling
+    description: Manejo de errores.
   - name: pet
     description: Everything about your Pets
   - name: store
@@ -55,6 +57,12 @@ tags:
   - name: user
     description: Operations about user
 x-tagGroups:
+  - name: Introduction
+    tags:
+      - environment
+      - authentification
+      - response_codes
+      - error_handling
   - name: General
     tags:
       - pet
