@@ -92,7 +92,7 @@ x-tagGroups:
       - error_handling
   - name: General
     tags:
-      - pets
+      - pet
       - store
   - name: User Management
     tags:
@@ -100,18 +100,18 @@ x-tagGroups:
 
 paths:
   /pet:   # pet
-    parameters:
-      - name: cookieParam
-        in: cookie
-        description: Some cookie
-        required: true
-        schema:
-          type: integer
-          format: int64
+    # parameters:
+      # - name: cookieParam
+      #   in: cookie
+      #   description: Some cookie
+      #   required: true
+      #   schema:
+      #     type: integer
+      #     format: int64
 
-    post:   # post
+    post:   # start post
       tags:
-        - pets
+        - pet
       summary: Enviar nuevo documento.
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
@@ -119,7 +119,7 @@ paths:
         obligatorias en este método son `businessRut`, `businessName`, `payerRut`, `payerName`, `folio`, `totalAmount` y `source`. 
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
-      operationId: addPet
+      operationId: addPet 
       responses:
         '405':
           description: Invalid input
@@ -158,10 +158,12 @@ paths:
             }
       requestBody:
         $ref: '#/components/requestBodies/Pet'
+    
+        # end post
     put:
       tags:
         - pet
-      summary: Update an existing pet
+      summary: Modificar un documento existente
       description: ''
       operationId: updatePet
       responses:
@@ -677,8 +679,12 @@ paths:
       responses:
         default:
           description: successful operation
+# start components
 components:
+
   schemas:
+
+    # start schemas
     ApiResponse:
       type: object
       properties:
@@ -789,6 +795,8 @@ components:
           default: false
       xml:
         name: Order
+    
+    # start schema Pet
     Pet:
       type: object
       required:
@@ -913,6 +921,8 @@ components:
           format: int32
       xml:
         name: User
+
+  # start requestBodies
   requestBodies:
     Pet:
       content:
@@ -931,6 +941,7 @@ components:
                 description: hooray
       description: Pet object that needs to be added to the store
       required: true
+    
     UserArray:
       content:
         application/json:
@@ -940,7 +951,10 @@ components:
               $ref: '#/components/schemas/User'
       description: List of user object
       required: true
+  # end requestBodies
+
   securitySchemes:
+    # start securitySchemes
     petstore_auth:
       description: |
         Get access to data while protecting your account credentials.
@@ -959,3 +973,4 @@ components:
       type: apiKey
       name: api_key
       in: header
+    # end securitySchemes
