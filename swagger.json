@@ -11,21 +11,7 @@
       }
     ],
     "info": {
-      "description": "This is a sample server Petstore server.\n
-      You can find out more about Swagger at\n[http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).\n
-      For this sample, you can use the api key `special-key` to test the authorization filters.\n\n
-      # Introducción\n
-      Xepelin cuenta con una API para clientes corporativos que permite a las empresas acceder a la información de las facturas, operaciones de factoring y confirming de forma segura y ágil. A través de nuestra API, los desarrolladores pueden acceder a:
-      Endpoint facturas externas te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores.
-      También puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
-      El objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.      
-      
-      # Autentificación\n
-
-      # Ambiente\n
-
-      Xepelin ofrece actualmente dos entornos. 
-      Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.\n",
+      "description": "This is a sample server Petstore server.\nYou can find out more about Swagger at\n[http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).\nFor this sample, you can use the api key `special-key` to test the authorization filters.\n\n# Introducción\nXepelin cuenta con una API para clientes corporativos que permite a las empresas acceder a la información de las facturas, operaciones de factoring y confirming de forma segura y ágil. A través de nuestra API, los desarrolladores pueden acceder a: Endpoint facturas externas te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores. También puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos. El objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.# Autentificación\n# Ambiente\n Xepelin ofrece actualmente dos entornos. Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.\n",
       
       "version": "1.0.0",
       "title":"Xepelin API Corps",
@@ -36,7 +22,7 @@
         "url": "https://github.com/Redocly/redoc"
       },
       "x-logo": {
-        "url": "https://www.xepelin.com/assets/img/logo.png",
+        "url": "https://i.ibb.co/3Nqv1FM/xepelin-logo.png",
         "altText": "Xep logo"
       },
       "license": {
