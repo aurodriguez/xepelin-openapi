@@ -6,7 +6,7 @@ servers:
     description: Sandbox server
 info:
   description: |
-    Encuentra mas informacion sobre la Aplicacion para corporativos en 
+    Encuentra mas informacion sobre la aplicación para corporativos en 
     [http://corps.xepelin.com](http://corps.xepelin.com) y sobre Xepelin 
     en [http://www.xepelin.com](http://www.xepelin.com).
 
@@ -28,7 +28,7 @@ info:
 #   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
   - name: intro
-    x-displayName: Introduccion
+    x-displayName: Introducción
     description: |
       Xepelin cuenta con una API para clientes corporativos que permite a las empresas 
       acceder a la información de las facturas, operaciones de factoring y confirming de 
@@ -54,46 +54,47 @@ tags:
       | `Produccion` | El entorno de producción está dedicado a interacciones en vivo con conexiones reales. | POST https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices |
 
   - name: authentification
-    x-displayName: Autenticacion
+    x-displayName: Autentificación
     description: |
-     Codigos y claves de autentificacion.
-  - name: response_codes
-    x-displayName: Codigos de Respuesta
-    description: |
-     Codigos de respuesta.
+     Códigos y claves de autentificacion.
+  # - name: response_codes
+  #   x-displayName: Codigos de Respuesta
+  #   description: |
+  #    Codigos de respuesta.
 
-      | Codigo   | Mensaje                | Descripcion |
-      |----------|------------------------|--------------------|
-      | `400`    | Bad Request            | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
-      | `404`    | Not Found              | En el método PUT  sucede cuando el ID informado no existe. |
-      | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
-      | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
+  #     | Codigo   | Mensaje                | Descripcion |
+  #     |----------|------------------------|--------------------|
+  #     | `400`    | Bad Request            | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
+  #     | `404`    | Not Found              | En el método PUT  sucede cuando el ID informado no existe. |
+  #     | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
+  #     | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
 
-  - name: error_handling
-    x-displayName: Manejo de Errores
-    description: |
-     Manejo de errores.
+  # - name: error_handling
+  #   x-displayName: Manejo de Errores
+  #   description: |
+  #    Manejo de errores.
+
   - name: pet
-    x-displayName: Documentos
-    description: |
-     Envio y modificacion de documentos.
-  - name: user
-    description: Operations about user
+    x-displayName: Facturas
+    description: Envío y modificación de facturas.
+
+  # - name: user
+  #   description: Operations about user
 
 x-tagGroups:
-  - name: Informacion General
+  - name: Información General
     tags:
       - intro
       - environment
       - authentification
-      - response_codes
-      - error_handling
-  - name: General
+      # - response_codes
+      # - error_handling
+  - name: Core Endpoints
     tags:
       - pet
-  - name: User Management
-    tags:
-      - user
+  # - name: User Management
+  #   tags:
+  #     - user
 
 paths:
   /pet:   # pet
@@ -842,5 +843,5 @@ components:
         authorization filters.
       type: apiKey
       name: api_key
-      in: header
+      in: autentification 
     # end securitySchemes
