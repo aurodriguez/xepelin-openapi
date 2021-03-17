@@ -133,11 +133,6 @@ paths:
         '500':
           description: Internal Server Error
 
-      # security:   # authentification
-      #   - petstore_auth:   
-      #       - 'write:pets'
-      #       - 'read:pets'
-
       security:
         - api_key: []
 
@@ -304,23 +299,6 @@ components:
           type: string
         message:
           type: string
-    # Cat:
-    #   description: A representation of a cat
-    #   allOf:
-    #     - $ref: '#/components/schemas/Pet'
-    #     - type: object
-    #       properties:
-    #         huntingSkill:
-    #           type: string
-    #           description: The measured skill for hunting
-    #           default: lazy
-    #           enum:
-    #             - clueless
-    #             - lazy
-    #             - adventurous
-    #             - aggressive
-    #       required:
-    #         - huntingSkill
 
     # Id
     Id:
