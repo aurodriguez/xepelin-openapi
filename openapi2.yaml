@@ -10,19 +10,6 @@ info:
     [http://corps.xepelin.com](http://corps.xepelin.com) y sobre Xepelin 
     en [http://www.xepelin.com](http://www.xepelin.com).
 
-    Xepelin cuenta con una API para clientes corporativos que permite a las empresas 
-    acceder a la información de las facturas, operaciones de factoring y confirming de 
-    forma segura y ágil. A través de nuestra API, los desarrolladores pueden acceder 
-    a **Endpoint Facturas Externas**, que te brinda la posibilidad de ingresar y guardar 
-    datos generales relacionados con la emisión de documentos fiscales como facturas o 
-    notas de crédito, estados, fechas y valores.
-    
-    También puedes modificar determinada información siempre que quieras según las 
-    necesidades que tengas para actualizar o modificar determinados datos.
-    
-    El objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los 
-    procesos internos de una forma imperceptible, limpia y tecnológica.
-
   version: 1.0.0
   title: Xepelin API Corps
   # termsOfService: 'http://swagger.io/terms/'
@@ -85,13 +72,16 @@ tags:
   - name: error_handling
     x-displayName: Manejo de Errores
     description: |
-     Codigos de respuesta.
-  - name: pet
-    description: Everything about your Pets
+     Manejo de errores.
+  - name: documents
+    x-displayName: Documentos
+    description: |
+     Envio y modificacion de documentos.
   - name: store
     description: Access to Petstore orders
   - name: user
     description: Operations about user
+
 x-tagGroups:
   - name: Informacion General
     tags:
@@ -102,11 +92,12 @@ x-tagGroups:
       - error_handling
   - name: General
     tags:
-      - pet
+      - documents
       - store
   - name: User Management
     tags:
       - user
+
 paths:
   /pet:
     parameters:
@@ -117,11 +108,18 @@ paths:
         schema:
           type: integer
           format: int64
+
     post:
       tags:
-        - pet
-      summary: Add a new pet to the store
-      description: Add new pet to the store inventory.
+        - documents
+      summary: Enviar nuevo documento.
+      description: |
+        En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
+        de un nuevo documento. Tendrás que considerar un mensaje por cada factura que quieras informar y que las etiquetas 
+        obligatorias en este método son `businessRut`, `businessName`, `payerRut`, `payerName`, `folio`, `totalAmount` y `source`. 
+        El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
+        los parámetros existentes actualmente.
+.
       operationId: addPet
       responses:
         '405':
@@ -161,10 +159,11 @@ paths:
             }
       requestBody:
         $ref: '#/components/requestBodies/Pet'
+
     put:
       tags:
-        - pet
-      summary: Update an existing pet
+        - documents
+      summary: Modificar un documento existente
       description: ''
       operationId: updatePet
       responses:
