@@ -57,6 +57,14 @@ tags:
     x-displayName: Autentificación
     description: |
      Códigos y claves de autentificacion.
+    securitySchemes:
+      api_key:
+        description: >
+          For this sample, you can use the api key `special-key` to test the
+          authorization filters.
+        type: apiKey
+        name: api_key
+
   # - name: response_codes
   #   x-displayName: Codigos de Respuesta
   #   description: |
@@ -843,5 +851,5 @@ components:
         authorization filters.
       type: apiKey
       name: api_key
-      in: autentification 
+      in: header 
     # end securitySchemes
