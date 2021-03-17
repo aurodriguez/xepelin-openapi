@@ -56,14 +56,7 @@ tags:
   - name: authentification
     x-displayName: Autentificación
     description: |
-     Códigos y claves de autentificacion.
-    securitySchemes:
-      api_key:
-        description: >
-          For this sample, you can use the api key `special-key` to test the
-          authorization filters.
-        type: apiKey
-        name: api_key
+     La autentificación actualmente se realiza a través de una `api-key` insertada en el header.
 
   # - name: response_codes
   #   x-displayName: Codigos de Respuesta
@@ -655,5 +648,6 @@ components:
         authorization filters.
       type: apiKey
       name: api_key
-      in: header 
+      tag: 
+        - authentification 
     # end securitySchemes
