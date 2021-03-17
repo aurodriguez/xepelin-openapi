@@ -99,7 +99,7 @@ x-tagGroups:
       - user
 
 paths:
-  /pet:
+  /pet:   # pet
     parameters:
       - name: cookieParam
         in: cookie
@@ -109,7 +109,7 @@ paths:
           type: integer
           format: int64
 
-    post:
+    post:   # post
       tags:
         - pets
       summary: Enviar nuevo documento.
@@ -123,8 +123,8 @@ paths:
       responses:
         '405':
           description: Invalid input
-      security:
-        - petstore_auth:
+      security:   # authentification
+        - petstore_auth:   
             - 'write:pets'
             - 'read:pets'
       x-code-samples:
