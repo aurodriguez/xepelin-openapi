@@ -1,67 +1,17 @@
 {
-    "openapi": "3.0.0",
-    "servers": [
-      {
-        "url": "//petstore.swagger.io/v2",
-        "description": "Default server"
-      },
-      {
-        "url": "//petstore.swagger.io/sandbox",
-        "description": "Sandbox server"
-      }
-    ],
+    "swagger": "2.0",
     "info": {
-      "tags": [
-        {
-          "name": "Introduction",
-          "description": "Intro..."
-        },
-        {
-          "name": "Ambiente",
-          "description": "Amb..."
-        }
-      ],
-      "description": "\n# Introducción\nXepelin cuenta con una API para clientes corporativos que permite a las empresas acceder a la información de las facturas, operaciones de factoring y confirming de forma segura y ágil. \nA través de nuestra API, los desarrolladores pueden acceder a:\n\n Endpoint facturas externas te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores. \n\nTambién puedes modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos. \n\nEl objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.\n# Autentificación\n# Ambiente\n Xepelin ofrece actualmente dos entornos. Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.\n",
-      
-      "version": "1.0.0",
-      "title":"Xepelin API Corps",
-      "contact": {
-        "name": "Contacto",
-        "email": "suyai@xepelin.com",
-        "url": "https://www.xepelin.com/"
-      },
-      "x-logo": {
-        "url": "https://i.ibb.co/3Nqv1FM/xepelin-logo.png",
-        "altText": "Xep logo"
-      },
-      "license": {
-        "name": "Apache 2.0",
-        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-      }
-    },    
-    "tags": [
-      {
-        "name": "pet",
-        "description": "Everything about your Pets"
-      },
-      {
-        "name": "store",
-        "description": "Access to Petstore orders"
-      },
-      {
-        "name": "user",
-        "description": "Operations about user"
-      }
+      "title": "Uber API",
+      "description": "Move your app forward with the Uber API",
+      "version": "1.0.0"
+    },
+    "host": "api.uber.com",
+    "schemes": [
+      "https"
     ],
-    "x-tagGroups": [
-      {
-        "name": "Core Endpoints",
-        "tags": [
-          "products",
-          "estimates",
-          "user"
-        ]
-      }
+    "basePath": "/v1",
+    "produces": [
+      "application/json"
     ],
     "paths": {
       "/products": {
