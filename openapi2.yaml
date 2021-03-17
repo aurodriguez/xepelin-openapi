@@ -119,7 +119,6 @@ paths:
         obligatorias en este método son `businessRut`, `businessName`, `payerRut`, `payerName`, `folio`, `totalAmount` y `source`. 
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
-.
       operationId: addPet
       responses:
         '405':
