@@ -1,18 +1,18 @@
 openapi: 3.0.0
+
 servers:
-  - url: //petstore.swagger.io/v2
+  - url: https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/
     description: Default server
-  - url: //petstore.swagger.io/sandbox
+  - url:  https://vzx7es13n7.execute-api.sa-east-1.amazonaws.com/staging/
     description: Sandbox server
+
 info:
   description: |
     Encuentra mas informacion sobre la aplicación para corporativos en 
     [http://corps.xepelin.com](http://corps.xepelin.com) y sobre Xepelin 
     en [http://www.xepelin.com](http://www.xepelin.com).
-
   version: 1.0.0
   title: Xepelin API Corps
-  # termsOfService: 'http://swagger.io/terms/'
   contact:
     name: Contacto
     email: suyai@xepelin.com
@@ -23,9 +23,7 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-# externalDocs:
-#   description: Find out how to create Github repo for your OpenAPI spec.
-#   url: 'https://github.com/Rebilly/generator-openapi-repo'
+
 tags:
   - name: intro
     x-displayName: Introducción
