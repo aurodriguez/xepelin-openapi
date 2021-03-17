@@ -133,11 +133,14 @@ paths:
         '500':
           description: Internal Server Error
 
-      security:   # authentification
-        - petstore_auth:   
-            - 'write:pets'
-            - 'read:pets'
-      
+      # security:   # authentification
+      #   - petstore_auth:   
+      #       - 'write:pets'
+      #       - 'read:pets'
+
+      security:
+        - api_key: []
+
       x-code-samples:
         - lang: 'C#'
           source: |
