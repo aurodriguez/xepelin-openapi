@@ -123,6 +123,7 @@ paths:
         
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
+
       operationId: addPet 
      
       requestBody:
@@ -134,14 +135,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponse'
+                $ref: '#/components/schemas/InvoiceCreated'
         '400':
           description: Bad Request
         '404':
           description: Not Found
         '500':
           description: Internal Server Error
-
 
       security:   # authentification
         - petstore_auth:   
@@ -600,6 +600,43 @@ components:
   schemas:
 
     # start schemas
+
+    InvoiceCreated:
+      type: object
+      properties:
+        businessRut:
+          description: Rut del emisor de la factura
+          type: string
+          example: 7111111-3
+        businessName:
+          description: Razon Social del emisor de la factura
+          type: string
+          example: Sociedad de ejemplo Spa
+        folio:
+          description: Número de consecutivo asignado a la factura
+          type: float
+          example: 123456
+        documentType:
+          description: Tipo de código de documento fiscal
+          type: float
+          example: 33
+        payerRut:
+          description: Rut del cliente receptor de la factura
+          type: float
+          example: 8222222-5
+        corpId:
+          description: Identificador interno cliente
+          type: float
+          example: 4000054248
+        Id:
+          description: Identificador Xepelin
+          type: float
+          example: 153
+        message:
+          description: Descripción del código enviado
+          type: string
+          example: Invoice ID created
+
 
     # ApiResponse
     ApiResponse:
