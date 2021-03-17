@@ -73,7 +73,7 @@ tags:
     x-displayName: Manejo de Errores
     description: |
      Manejo de errores.
-  - name: documents
+  - name: pets
     x-displayName: Documentos
     description: |
      Envio y modificacion de documentos.
