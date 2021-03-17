@@ -472,6 +472,5 @@ components:
         authorization filters.
       type: apiKey
       name: api_key
-      tag: 
-        - authentification 
+      in: header 
     # end securitySchemes
