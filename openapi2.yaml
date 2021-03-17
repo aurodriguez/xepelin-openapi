@@ -130,17 +130,18 @@ paths:
 
       responses:
         '200':
-          summary: Invoice ID Created
-          description: |
-          A continuación se muestra un ejemplo de mensaje síncrono 
-          de respuesta que se enviará al momento de informar sobre un nuevo documento. 
-          Se debe considerar que se recibirá uno por cada documento informado.
+          description: Invoice ID Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-          # '405':
-          #   description: Invalid input
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+
 
       security:   # authentification
         - petstore_auth:   
