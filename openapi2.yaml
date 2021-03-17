@@ -69,10 +69,10 @@ tags:
       | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
       | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
 
-  - name: error_handling
-    x-displayName: Manejo de Errores
-    description: |
-     Manejo de errores.
+  # - name: error_handling
+  #   x-displayName: Manejo de Errores
+  #   description: |
+  #    Manejo de errores.
   - name: pet
     x-displayName: Documentos
     description: |
@@ -85,7 +85,7 @@ x-tagGroups:
       - environment
       - authentification
       - response_codes
-      - error_handling
+      # - error_handling
   - name: Core Endpoints
     tags:
       - pet
@@ -112,8 +112,9 @@ paths:
         Tendrás que considerar un mensaje por cada factura que quieras informar y que las etiquetas 
         obligatorias en este método son `businessRut`, `businessName`, `payerRut`, `payerName`, `folio`, `totalAmount` y `source`. 
         
-        El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
-        los parámetros existentes actualmente.
+        Es importante notar que
+        - Currency: Los códigos utilizados para las monedas son los comprendidos en la norma [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217).
+        - Source: El mismo será acordado entre las partes y deberá ser siempre fijo por parte de quien envía el mensaje.
 
       operationId: addPet 
      
@@ -170,6 +171,7 @@ paths:
             }
     
         # end post
+
     put:
       tags:
         - pet
@@ -327,89 +329,6 @@ paths:
               type: string
               format: binary
   /pet/findByStatus:
-    get:
-      tags:
-        - pet
-      summary: Finds Pets by status
-      description: Multiple status values can be provided with comma seperated strings
-      operationId: findPetsByStatus
-      parameters:
-        - name: status
-          in: query
-          description: Status values that need to be considered for filter
-          required: true
-          style: form
-          schema:
-            type: array
-            minItems: 1
-            maxItems: 3
-            items:
-              type: string
-              enum:
-                - available
-                - pending
-                - sold
-              default: available
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid status value
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-  /pet/findByTags:
-    get:
-      tags:
-        - pet
-      summary: Finds Pets by tags
-      description: >-
-        Muliple tags can be provided with comma seperated strings. Use tag1,
-        tag2, tag3 for testing.
-      operationId: findPetsByTags
-      deprecated: true
-      parameters:
-        - name: tags
-          in: query
-          description: Tags to filter by
-          required: true
-          style: form
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid tag value
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
 
 # start components
 components:
