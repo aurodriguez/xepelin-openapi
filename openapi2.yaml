@@ -40,6 +40,22 @@ info:
 #   description: Find out how to create Github repo for your OpenAPI spec.
 #   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
+  - name: intro
+    x-displayName: Introduccion
+    description: |
+      Xepelin cuenta con una API para clientes corporativos que permite a las empresas 
+      acceder a la información de las facturas, operaciones de factoring y confirming de 
+      forma segura y ágil. A través de nuestra API, los desarrolladores pueden acceder 
+      a **Endpoint Facturas Externas**, que te brinda la posibilidad de ingresar y guardar 
+      datos generales relacionados con la emisión de documentos fiscales como facturas o 
+      notas de crédito, estados, fechas y valores.
+      
+      También puedes modificar determinada información siempre que quieras según las 
+      necesidades que tengas para actualizar o modificar determinados datos.
+      
+      El objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los 
+      procesos internos de una forma imperceptible, limpia y tecnológica.
+
   - name: environment
     x-displayName: Ambiente
     description: |
@@ -77,8 +93,9 @@ tags:
   - name: user
     description: Operations about user
 x-tagGroups:
-  - name: Introduction
+  - name: Informacion General
     tags:
+      - intro
       - environment
       - authentification
       - response_codes
