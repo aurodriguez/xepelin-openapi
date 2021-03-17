@@ -824,12 +824,18 @@ components:
       required:
         - businessRut
         - businessName
-      discriminator:
-        propertyName: petType
-        mapping:
-          cat: '#/components/schemas/Cat'
-          dog: '#/components/schemas/Dog'
-          bee: '#/components/schemas/HoneyBee'
+        - payerRut
+        - payerName
+        - folio
+        - totalAmount
+        - issuedDate
+        - source
+      # discriminator:
+      #   propertyName: petType
+      #   mapping:
+      #     cat: '#/components/schemas/Cat'
+      #     dog: '#/components/schemas/Dog'
+      #     bee: '#/components/schemas/HoneyBee'
       properties:
         id:
           externalDocs:
@@ -859,6 +865,83 @@ components:
           description: Correo electrónico del emisor del documento
           type: string
           example: example@xepelin.com
+        payerRut:
+          description: Rut del cliente receptor de la factura
+          type: string
+          example: 8222222-5
+        payerName:
+          description: Razon social del cliente receptor de la factura
+          type: string
+          example: X Capital SRL
+        folio:
+          description: Número de consecutivo asignado a la factura
+          type: float
+          example: 439794
+        documentType: 
+          description: Tipo de código de documento fiscal
+          type: float
+          example: 33
+        buyOrderId:
+          description: Identificador interno Orden de Compra cliente
+          type: float
+          example: 156789         
+        buyOrder:
+          description: Número de Orden de Compra cliente
+          type: float
+          example: OC-156789
+        currency:
+          description: Tipo de moneda en la que se encuentra expresado el valor del documento
+          type: string
+          example: CLP
+        totalAmount:
+          description: Monto total de documento correspondiente al folio informado
+          type: float
+          example: 89525
+        nc:
+          description: Número de consecutivo asignado a la Nota Crédito asociada al folio de la factura
+          type: float
+          example: NC-4578
+        discount:
+          description: Valor total de la Nota Crédito emitida ó descuento aplicado asociada al folio de la factura
+          type: float
+          example: 0
+        issuedDate:
+          description: Fecha de emisión de la factura
+          type: Date
+          example: 2021-01-11
+        paymentDate:
+          description: Fecha tentativa de pago de la factura
+          type: Date
+          example: 2021-02-17
+        limitDate:
+          description: Ultima fecha para financiar la factura
+          type: Date
+          example: 2021-02-17
+        paymentConfirmedDate:
+          description: Fecha efectiva en la que se generó el pago de la factura
+          type: Date
+          example: 2021-02-19
+        corpDescription:
+          description: Estado de aprobación de la factura en ERP cliente
+          type: string
+          example: a pago    
+        siiStatus:
+          description: Estados de la factura en el Sii, Acuse Recibo, Cedida, Reclamado y Contado/Gratuito
+          type: string
+          example: Acuse Recibo        
+        xmlDte:
+          description: XML correspondiente a la emisión de la factura
+          type: string
+          example: 564789320  
+        sourceAccount:
+          description: Cuenta desde donde se originó el pago 
+          type: string
+          example: PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iSVNPLTg4NTktMSI/Pgo8R...     
+        source:
+          description: Identificador de la fuente hardcodeado
+          type: string
+          example: Xepelin
+
         
         # businessRut:
         #   description: Identificador interno cliente
