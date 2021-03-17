@@ -50,9 +50,62 @@
     ],
     "paths": {
       "/documentos/enviar": {
+        "post": {
+          "tags": [
+            "documentos"
+          ],
+          "summary": "Enviar nuevo documento",
+          "description": "",
+          "operationId": "updatePetWithForm",
+          "parameters": [
+            {
+              "name": "petId",
+              "in": "path",
+              "description": "ID of pet that needs to be updated",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "405": {
+              "description": "Invalid input"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "description": "Updated name of the pet",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "Updated status of the pet",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+
         "get": {
           "summary": "Enviar Nuevo Documento",
-          "description": "The Price Estimates endpoint returns an estimated price range for each product offered at a given location. The price estimate is provided as a formatted string with the full price range and the localized currency symbol.<br><br>The response also includes low and high estimates, and the [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code for situations requiring currency conversion. When surge is active for a particular product, its surge_multiplier will be greater than 1, but the price estimate already factors in this multiplier.",
+          "description": "En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca de un nuevo documento. Tendrás que considerar un mensaje por cada factura que quieras informar y que las etiquetas obligatorias en este método son: businessRut, businessName, payerRut, payerName, folio, totalAmount y source.\n\nEl siguiente es un .json del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos los parámetros existentes actualmente.",
           "parameters": [
             {
               "name": "start_latitude",
