@@ -77,11 +77,6 @@ tags:
     x-displayName: Documentos
     description: |
      Envio y modificacion de documentos.
-  - name: user
-    description: Operations about user
-  # - name: store
-  #   description: Operations about store
-
 
 x-tagGroups:
   - name: Informacion General
@@ -91,13 +86,9 @@ x-tagGroups:
       - authentification
       - response_codes
       - error_handling
-  - name: General
+  - name: Core Endpoints
     tags:
       - pet
-      # - store
-  - name: User Management
-    tags:
-      - user
 
 paths:
   /pet:   # pet
@@ -135,7 +126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvoiceCreated'
+                $ref: '#/components/schemas/InvoiceCreatedResponse'
         '400':
           description: Bad Request
         '404':
@@ -419,181 +410,7 @@ paths:
         - petstore_auth:
             - 'write:pets'
             - 'read:pets'
-  /user:
-    post:
-      tags:
-        - user
-      summary: Create user
-      description: This can only be done by the logged in user.
-      operationId: createUser
-      responses:
-        default:
-          description: successful operation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: Created user object
-        required: true
-  '/user/{username}':
-    get:
-      tags:
-        - user
-      summary: Get user by user name
-      description: ''
-      operationId: getUserByName
-      parameters:
-        - name: username
-          in: path
-          description: 'The name that needs to be fetched. Use user1 for testing. '
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid username supplied
-        '404':
-          description: User not found
-    put:
-      tags:
-        - user
-      summary: Updated user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
-      parameters:
-        - name: username
-          in: path
-          description: name that need to be deleted
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid user supplied
-        '404':
-          description: User not found
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: Updated user object
-        required: true
-    delete:
-      tags:
-        - user
-      summary: Delete user
-      description: This can only be done by the logged in user.
-      operationId: deleteUser
-      parameters:
-        - name: username
-          in: path
-          description: The name that needs to be deleted
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid username supplied
-        '404':
-          description: User not found
-  /user/createWithArray:
-    post:
-      tags:
-        - user
-      summary: Creates list of users with given input array
-      description: ''
-      operationId: createUsersWithArrayInput
-      responses:
-        default:
-          description: successful operation
-      requestBody:
-        $ref: '#/components/requestBodies/UserArray'
-  /user/createWithList:
-    post:
-      tags:
-        - user
-      summary: Creates list of users with given input array
-      description: ''
-      operationId: createUsersWithListInput
-      responses:
-        default:
-          description: successful operation
-      requestBody:
-        $ref: '#/components/requestBodies/UserArray'
-  /user/login:
-    get:
-      tags:
-        - user
-      summary: Logs user into the system
-      description: ''
-      operationId: loginUser
-      parameters:
-        - name: username
-          in: query
-          description: The user name for login
-          required: true
-          schema:
-            type: string
-        - name: password
-          in: query
-          description: The password for login in clear text
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          headers:
-            X-Rate-Limit:
-              description: calls per hour allowed by the user
-              schema:
-                type: integer
-                format: int32
-            X-Expires-After:
-              description: date in UTC when toekn expires
-              schema:
-                type: string
-                format: date-time
-          content:
-            application/json:
-              schema:
-                type: string
-              examples:
-                response:
-                  value: OK
-            application/xml:
-              schema:
-                type: string
-              examples:
-                response:
-                  value:  <Message> OK </Message>
-            text/plain:
-              examples:
-                response:
-                  value:  OK
-        '400':
-          description: Invalid username/password supplied
-  /user/logout:
-    get:
-      tags:
-        - user
-      summary: Logs out current logged in user session
-      description: ''
-      operationId: logoutUser
-      responses:
-        default:
-          description: successful operation
+
 # start components
 components:
 
@@ -601,7 +418,7 @@ components:
 
     # start schemas
 
-    InvoiceCreated:
+    InvoiceCreatedResponse:
       type: object
       properties:
         businessRut:
@@ -688,32 +505,7 @@ components:
               description: Dumb Property
       xml:
         name: Category
-    Dog:
-      description: A representation of a dog
-      allOf:
-        - $ref: '#/components/schemas/Pet'
-        - type: object
-          properties:
-            packSize:
-              type: integer
-              format: int32
-              description: The size of the pack the dog is from
-              default: 1
-              minimum: 1
-          required:
-            - packSize
-    HoneyBee:
-      description: A representation of a honey bee
-      allOf:
-        - $ref: '#/components/schemas/Pet'
-        - type: object
-          properties:
-            honeyPerDay:
-              type: number
-              description: Average amount of honey produced per day in ounces
-              example: 3.14
-          required:
-            - honeyPerDay
+
     # Id
     Id:
       type: integer
@@ -879,54 +671,6 @@ components:
           type: string
           example: Xepelin
 
-        
-        # businessRut:
-        #   description: Identificador interno cliente
-        #   type: float
-        #   example: 4000054248
-        # category:
-        #   description: Categories this pet belongs to
-        #   allOf:
-        #     - $ref: '#/components/schemas/Category'
-        # name:
-        #   description: The name given to a pet
-        #   type: string
-        #   example: Guru
-        # photoUrls:
-        #   description: The list of URL to a cute photos featuring pet
-        #   type: array
-        #   maxItems: 20
-        #   xml:
-        #     name: photoUrl
-        #     wrapped: true
-        #   items:
-        #     type: string
-        #     format: url
-        # friend:
-        #   allOf:
-        #     - $ref: '#/components/schemas/Pet'
-        # tags:
-        #   description: Tags attached to the pet
-        #   type: array
-        #   minItems: 1
-        #   xml:
-        #     name: tag
-        #     wrapped: true
-        #   items:
-        #     $ref: '#/components/schemas/Tag'
-        # status:
-        #   type: string
-        #   description: Pet status in the store
-        #   enum:
-        #     - available
-        #     - pending
-        #     - sold
-        # petType:
-        #   description: Type of a pet
-        #   type: string
-
-      # xml:
-      #   name: Pet
 
     # Tag
     Tag:
@@ -942,58 +686,6 @@ components:
           minLength: 1
       xml:
         name: Tag
-
-    # User
-    User:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/Id'
-        pet:
-          oneOf:
-            - $ref: '#/components/schemas/Pet'
-            - $ref: '#/components/schemas/Tag'
-        username:
-          description: User supplied username
-          type: string
-          minLength: 4
-          example: John78
-        firstName:
-          description: User first name
-          type: string
-          minLength: 1
-          example: John
-        lastName:
-          description: User last name
-          type: string
-          minLength: 1
-          example: Smith
-        email:
-          description: User email address
-          type: string
-          format: email
-          example: john.smith@example.com
-        password:
-          type: string
-          description: >-
-            User password, MUST contain a mix of upper and lower case letters,
-            as well as digits
-          format: password
-          minLength: 8
-          pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])'
-          example: drowssaP123
-        phone:
-          description: User phone number in international format
-          type: string
-          pattern: '^\+(?:[0-9]-?){6,14}[0-9]$'
-          example: +1-202-555-0192
-          nullable: true
-        userStatus:
-          description: User status
-          type: integer
-          format: int32
-      xml:
-        name: User
 
   # start requestBodies
   requestBodies:
@@ -1015,15 +707,6 @@ components:
       description: Pet object that needs to be added to the store
       required: true
     
-    UserArray:
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
-      description: List of user object
-      required: true
   # end requestBodies
 
   securitySchemes:
