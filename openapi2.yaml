@@ -304,23 +304,23 @@ components:
           type: string
         message:
           type: string
-    Cat:
-      description: A representation of a cat
-      allOf:
-        - $ref: '#/components/schemas/Pet'
-        - type: object
-          properties:
-            huntingSkill:
-              type: string
-              description: The measured skill for hunting
-              default: lazy
-              enum:
-                - clueless
-                - lazy
-                - adventurous
-                - aggressive
-          required:
-            - huntingSkill
+    # Cat:
+    #   description: A representation of a cat
+    #   allOf:
+    #     - $ref: '#/components/schemas/Pet'
+    #     - type: object
+    #       properties:
+    #         huntingSkill:
+    #           type: string
+    #           description: The measured skill for hunting
+    #           default: lazy
+    #           enum:
+    #             - clueless
+    #             - lazy
+    #             - adventurous
+    #             - aggressive
+    #       required:
+    #         - huntingSkill
 
     # Id
     Id:
@@ -463,14 +463,14 @@ components:
               - description: My Pet
                 title: Pettie
               - $ref: '#/components/schemas/Pet'
-        application/xml:
-          schema:
-            type: 'object'
-            properties:
-              name:
-                type: string
-                description: hooray
-      description: Pet object that needs to be added to the store
+        # application/xml:
+        #   schema:
+        #     type: 'object'
+        #     properties:
+        #       name:
+        #         type: string
+        #         description: hooray
+      # description: Nueva factura que 
       required: true
     
   # end requestBodies
