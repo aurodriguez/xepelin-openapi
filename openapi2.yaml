@@ -69,10 +69,10 @@ tags:
       | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
       | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
 
-  # - name: error_handling
-  #   x-displayName: Manejo de Errores
-  #   description: |
-  #    Manejo de errores.
+  - name: error_handling
+    x-displayName: Manejo de Errores
+    description: |
+     Manejo de errores.
   - name: documents
     x-displayName: Documentos
     description: |
@@ -89,17 +89,17 @@ x-tagGroups:
       - environment
       - authentification
       - response_codes
-      # - error_handling
+      - error_handling
   - name: General
     tags:
-      - documents
+      - pets
       - store
   - name: User Management
     tags:
       - user
 
 paths:
-  /documents:
+  /pet:
     parameters:
       - name: cookieParam
         in: cookie
@@ -111,7 +111,7 @@ paths:
 
     post:
       tags:
-        - documents
+        - pets
       summary: Enviar nuevo documento.
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
@@ -159,11 +159,10 @@ paths:
             }
       requestBody:
         $ref: '#/components/requestBodies/Pet'
-
     put:
       tags:
-        - documents
-      summary: Modificar un documento existente
+        - pet
+      summary: Update an existing pet
       description: ''
       operationId: updatePet
       responses:
