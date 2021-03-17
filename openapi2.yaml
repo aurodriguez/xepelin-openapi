@@ -189,10 +189,10 @@ paths:
           description: Invalid ID supplied
         '500':
           description: Internal Server Error
+      
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - api_key: []
+
       x-code-samples:
         - lang: PHP
           source: |
@@ -209,40 +209,40 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Pet'
 
-  '/pet/{petId}':
-    post:
-      tags:
-        - pet
-      summary: Updates a pet in the store with form data
-      description: ''
-      operationId: updatePetWithForm
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet that needs to be updated
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '405':
-          description: Invalid input
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                name:
-                  description: Updated name of the pet
-                  type: string
-                status:
-                  description: Updated status of the pet
-                  type: string
+  # '/pet/{petId}':
+  #   post:
+  #     tags:
+  #       - pet
+  #     summary: Updates a pet in the store with form data
+  #     description: ''
+  #     operationId: updatePetWithForm
+  #     parameters:
+  #       - name: petId
+  #         in: path
+  #         description: ID of pet that needs to be updated
+  #         required: true
+  #         schema:
+  #           type: integer
+  #           format: int64
+  #     responses:
+  #       '405':
+  #         description: Invalid input
+  #     security:
+  #       - petstore_auth:
+  #           - 'write:pets'
+  #           - 'read:pets'
+  #     requestBody:
+  #       content:
+  #         application/x-www-form-urlencoded:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               name:
+  #                 description: Updated name of the pet
+  #                 type: string
+  #               status:
+  #                 description: Updated status of the pet
+  #                 type: string
 
 # start components
 components:
@@ -318,13 +318,8 @@ components:
         - totalAmount
         - issuedDate
         - source
-      # discriminator:
-      #   propertyName: petType
-      #   mapping:
-      #     cat: '#/components/schemas/Cat'
-      #     dog: '#/components/schemas/Dog'
-      #     bee: '#/components/schemas/HoneyBee'
       properties:
+        # id of pet
         id:
           externalDocs:
             description: "Find more info here"
@@ -450,6 +445,25 @@ components:
         #         description: hooray
       # description: Nueva factura que 
       required: true
+
+    # Pet:
+    #   content:
+    #     application/json:
+    #       schema:
+    #         allOf:
+    #           - description: My Pet
+    #             title: Pettie
+    #           - $ref: '#/components/schemas/Pet'
+    #     # application/xml:
+    #     #   schema:
+    #     #     type: 'object'
+    #     #     properties:
+    #     #       name:
+    #     #         type: string
+    #     #         description: hooray
+    #   # description: Nueva factura que 
+    #   required: true
+
     
   # end requestBodies
 
