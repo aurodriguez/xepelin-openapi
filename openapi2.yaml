@@ -73,7 +73,7 @@ tags:
     x-displayName: Manejo de Errores
     description: |
      Manejo de errores.
-  - name: pets
+  - name: pet
     x-displayName: Documentos
     description: |
      Envio y modificacion de documentos.
@@ -120,13 +120,19 @@ paths:
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
       operationId: addPet 
+     
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
+
       responses:
         '405':
           description: Invalid input
-      security:   # authentification
+     
+          security:   # authentification
         - petstore_auth:   
             - 'write:pets'
             - 'read:pets'
+      
       x-code-samples:
         - lang: 'C#'
           source: |
@@ -156,8 +162,6 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
-      requestBody:
-        $ref: '#/components/requestBodies/Pet'
     
         # end post
     put:
