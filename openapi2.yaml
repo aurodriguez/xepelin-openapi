@@ -480,11 +480,19 @@ components:
     #       scopes:
     #         'write:pets': modify pets in your account
     #         'read:pets': read your pets
-    api_key:
+    ApiKeyAuth:
       description: >
         For this sample, you can use the api key `special-key` to test the
         authorization filters.
       type: apiKey
-      name: api_key
-      in: header 
+      in: header
+      name: X-API-Key
+
+    # api_key:
+    #   description: >
+    #     For this sample, you can use the api key `special-key` to test the
+    #     authorization filters.
+    #   type: apiKey
+    #   name: api_key
+    #   in: header 
     # end securitySchemes
