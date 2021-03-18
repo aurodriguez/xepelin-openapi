@@ -90,17 +90,11 @@ x-tagGroups:
       - pet
 
 paths:
-  /pet:   # pet
-    # parameters:
-      # - name: cookieParam
-      #   in: cookie
-      #   description: Some cookie
-      #   required: true
-      #   schema:
-      #     type: integer
-      #     format: int64
+  /pet:   
 
-    post:   # start post
+    # post 
+    
+    post:   
       tags:
         - pet
       summary: Enviar nuevo documento
@@ -165,11 +159,9 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
-    
-        # end post
-    
-    # start put
-    
+        
+    # put
+
     put:
       tags:
         - pet
@@ -244,69 +236,22 @@ paths:
   #                 description: Updated status of the pet
   #                 type: string
 
-# start components
 components:
+
+  requestBodies:
+
+    Pet:
+      content:
+        application/json:
+          schema:
+            allOf:
+              - description: My Pet
+                title: Pettie
+              - $ref: '#/components/schemas/Pet'
+      required: true
 
   schemas:
 
-    # start schemas
-
-    InvoiceCreatedResponse:
-      type: object
-      properties:
-        businessRut:
-          description: Rut del emisor de la factura
-          type: string
-          example: 7111111-3
-        businessName:
-          description: Razon Social del emisor de la factura
-          type: string
-          example: Sociedad de ejemplo Spa
-        folio:
-          description: Número de consecutivo asignado a la factura
-          type: float
-          example: 123456
-        documentType:
-          description: Tipo de código de documento fiscal
-          type: float
-          example: 33
-        payerRut:
-          description: Rut del cliente receptor de la factura
-          type: float
-          example: 8222222-5
-        corpId:
-          description: Identificador interno cliente
-          type: float
-          example: 4000054248
-        Id:
-          description: Identificador Xepelin
-          type: float
-          example: 153
-        message:
-          description: Descripción del código enviado
-          type: string
-          example: Invoice ID created
-
-
-    # ApiResponse
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        type:
-          type: string
-        message:
-          type: string
-
-    # Id
-    Id:
-      type: integer
-      format: int64
-      readOnly: true
-    
-    # Pet
     Pet:
       type: object
       required:
@@ -319,15 +264,13 @@ components:
         - issuedDate
         - source
       properties:
-        # id of pet
-        id:
+        id:             # id of pet
           externalDocs:
             description: "Find more info here"
             url: "https://example.com"
           description: Pet ID
           allOf:
             - $ref: '#/components/schemas/Id'
-        
         corpId:
           description: Identificador interno cliente
           type: float
@@ -423,63 +366,62 @@ components:
         source:
           description: Identificador de la fuente hardcodeado
           type: string
-          example: Xepelin
+          example: Xepelin  
 
-  # start requestBodies
+    Id:
+      type: integer
+      format: int64
+      readOnly: true
 
-  requestBodies:
-    Pet:
-      content:
-        application/json:
-          schema:
-            allOf:
-              - description: My Pet
-                title: Pettie
-              - $ref: '#/components/schemas/Pet'
-        # application/xml:
-        #   schema:
-        #     type: 'object'
-        #     properties:
-        #       name:
-        #         type: string
-        #         description: hooray
-      # description: Nueva factura que 
-      required: true
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
 
-    # Pet:
-    #   content:
-    #     application/json:
-    #       schema:
-    #         allOf:
-    #           - description: My Pet
-    #             title: Pettie
-    #           - $ref: '#/components/schemas/Pet'
-    #     # application/xml:
-    #     #   schema:
-    #     #     type: 'object'
-    #     #     properties:
-    #     #       name:
-    #     #         type: string
-    #     #         description: hooray
-    #   # description: Nueva factura que 
-    #   required: true
-
-    
-  # end requestBodies
+    InvoiceCreatedResponse:
+      type: object
+      properties:
+        businessRut:
+          description: Rut del emisor de la factura
+          type: string
+          example: 7111111-3
+        businessName:
+          description: Razon Social del emisor de la factura
+          type: string
+          example: Sociedad de ejemplo Spa
+        folio:
+          description: Número de consecutivo asignado a la factura
+          type: float
+          example: 123456
+        documentType:
+          description: Tipo de código de documento fiscal
+          type: float
+          example: 33
+        payerRut:
+          description: Rut del cliente receptor de la factura
+          type: float
+          example: 8222222-5
+        corpId:
+          description: Identificador interno cliente
+          type: float
+          example: 4000054248
+        Id:
+          description: Identificador Xepelin
+          type: float
+          example: 153
+        message:
+          description: Descripción del código enviado
+          type: string
+          example: Invoice ID created
 
   securitySchemes:
-    # start securitySchemes
-    # petstore_auth:
-    #   description: |
-    #     Get access to data while protecting your account credentials.
-    #     OAuth2 is also a safer and more secure way to give you access.
-    #   type: oauth2
-    #   flows:
-    #     implicit:
-    #       authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
-    #       scopes:
-    #         'write:pets': modify pets in your account
-    #         'read:pets': read your pets
+
     api_key:
       description: >
         For this sample, you can use the api key `special-key` to test the
@@ -487,4 +429,3 @@ components:
       type: apiKey
       name: api_key
       in: header 
-    # end securitySchemes
