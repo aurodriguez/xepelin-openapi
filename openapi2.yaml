@@ -46,10 +46,10 @@ info:
 
       | Código | Mensaje   |
       |----------|----------------|
-      |`200`   | ✅**Invoice ID Created** - Sucede cuando la solicitud enviada tuvo éxito. |
-      |`400`    | ❌ **Bad Request** - Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
-      |`404`    | ❌ **Not Found** - En el método PUT  sucede cuando el ID informado no existe. |
-      |`500`  | ❌ **Internal Server Error** - Sucede cuando tenemos un error inesperado o no catalogado. |
+      |`200`   | ✅**Invoice ID Created** - La solicitud enviada tuvo éxito. |
+      |`400`    | ❌ **Bad Request** - Request está vacío o le falta un input obligatorio, o tipo de input es incorrecto. |
+      |`404`    | ❌ **Not Found** - En el método PUT sucede cuando el ID informado no existe. |
+      |`500`  | ❌ **Internal Server Error** - Error inesperado o no catalogado. |
 
     
 
@@ -138,7 +138,15 @@ paths:
         
     # put
 
-    '/invoice/{invoiceId}':
+  /invoice/{invoiceId}:
+    parameters:
+    - name: invoiceId
+      in: path
+      description: ID of invoice that needs to be modified
+      required: true
+      schema:
+        type: integer
+
     put:
       tags:
         - invoice
@@ -146,13 +154,6 @@ paths:
       description: ''
       operationId: updateInvoice
 
-      parameters:
-        - name: invoiceId
-          in: path
-          description: ID of invoice that needs to be modified
-          required: true
-          schema:
-            type: integer
 
       requestBody:
         $ref: '#/components/requestBodies/ModifyInvoice'
