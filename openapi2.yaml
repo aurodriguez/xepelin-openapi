@@ -162,13 +162,26 @@ paths:
         
     # put
 
-    # '/invoice/{invoiceId}':
+    '/invoice/{invoiceID}':
     put:
       tags:
         - invoice
       summary: Modificar un documento existente
       description: ''
       operationId: updateInvoice
+
+      parameters:
+        - name: invoiceID
+          in: path
+          description: ID of pet that needs to be updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      requestBody:
+        $ref: '#/components/requestBodies/ModifyInvoice'
+
       responses:
         '200':
           description: Invoice ID Created
@@ -199,43 +212,6 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
-      requestBody:
-        $ref: '#/components/requestBodies/ModifyInvoice'
-
-  # '/pet/{petId}':
-  #   post:
-  #     tags:
-  #       - pet
-  #     summary: Updates a pet in the store with form data
-  #     description: ''
-  #     operationId: updatePetWithForm
-  #     parameters:
-  #       - name: petId
-  #         in: path
-  #         description: ID of pet that needs to be updated
-  #         required: true
-  #         schema:
-  #           type: integer
-  #           format: int64
-  #     responses:
-  #       '405':
-  #         description: Invalid input
-  #     security:
-  #       - petstore_auth:
-  #           - 'write:pets'
-  #           - 'read:pets'
-  #     requestBody:
-  #       content:
-  #         application/x-www-form-urlencoded:
-  #           schema:
-  #             type: object
-  #             properties:
-  #               name:
-  #                 description: Updated name of the pet
-  #                 type: string
-  #               status:
-  #                 description: Updated status of the pet
-  #                 type: string
 
 components:
 
