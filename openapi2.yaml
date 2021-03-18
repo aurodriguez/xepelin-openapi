@@ -44,8 +44,8 @@ info:
     
     # Códigos de Respuesta
 
-      | Código | Mensaje   |Descripción |
-      |----------|----------------|---------|
+      | Código | Mensaje   |
+      |----------|----------------|
       |`200`   | ✅**Invoice ID Created** - Sucede cuando la solicitud enviada tuvo éxito. |
       |`400`    | ❌ **Bad Request** - Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
       |`404`    | ❌ **Not Found** - En el método PUT  sucede cuando el ID informado no existe. |
@@ -53,8 +53,8 @@ info:
 
     
 
-  version: 1.0.0
-  title: Xepelin API - versión Beta
+  version: Beta
+  title: Xepelin API 
   contact:
     name: Contacto
     email: suyai@xepelin.com
@@ -106,9 +106,6 @@ paths:
         '500':
           description: Internal Server Error
 
-      # security:
-      #   - api_key: []
-
       x-code-samples:
         - lang: 'C#'
           source: |
@@ -143,13 +140,6 @@ paths:
 
     '/invoice/{invoiceId}':
 
-    parameters:
-      - schema:
-          type: integer
-        name: invoiceId
-        in: path
-        required: true
-
     put:
       tags:
         - invoice
@@ -164,7 +154,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: float
 
       requestBody:
         $ref: '#/components/requestBodies/ModifyInvoice'
@@ -183,9 +172,6 @@ paths:
         '500':
           description: Internal Server Error
       
-      security:
-        - api_key: []
-
       x-code-samples:
         - lang: PHP
           source: |
