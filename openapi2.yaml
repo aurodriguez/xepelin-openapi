@@ -46,27 +46,26 @@ tags:
     description: |
       Xepelin ofrece actualmente dos entornos. Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.
       
-      | Ambiente     | Propósito                                      | URL                                            |
-      |--------------|:------------------------------------------------|------------------------------------------------|
-      | `Sandbox`    | El entorno de sandbox está dedicado a las fases de prueba y desarrollo. En este entorno, puede enviar datos de prueba a todos los endpoints. | https://vzx7es13n7.execute-api.sa-east-1.amazonaws.com/staging/|
-      | `Produccion` | El entorno de producción está dedicado a interacciones en vivo con conexiones reales. | https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/ |
+      | Ambiente     | Propósito   | URL       |
+      |-------------|:------------|-------------|
+      | **Sandbox**   | El entorno de sandbox está dedicado a las fases de prueba y desarrollo. En este entorno, puede enviar datos de prueba a todos los endpoints. | https://vzx7es13n7.execute-api.sa-east-1.amazonaws.com/staging/|
+      | **Produccion** | El entorno de producción está dedicado a interacciones en vivo con conexiones reales. | https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/ |
 
   - name: authentification
     x-displayName: Autentificación
     description: |
      La autentificación actualmente se realiza a través de una `api-key` insertada en el header.
 
-  # - name: response_codes
-  #   x-displayName: Codigos de Respuesta
-  #   description: |
-  #    Codigos de respuesta.
+  - name: response_codes
+    x-displayName: Códigos de Respuesta
+    description: |
 
-  #     | Codigo   | Mensaje                | Descripcion |
-  #     |----------|------------------------|--------------------|
-  #     | `400`    | Bad Request            | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
-  #     | `404`    | Not Found              | En el método PUT  sucede cuando el ID informado no existe. |
-  #     | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
-  #     | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
+      | Codigo   | Mensaje                | Descripcion |
+      |----------|------------------------|--------------------|
+      | `400`    | Bad Request            | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
+      | `404`    | Not Found              | En el método PUT  sucede cuando el ID informado no existe. |
+      | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
+      | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
 
   # - name: error_handling
   #   x-displayName: Manejo de Errores
@@ -83,7 +82,7 @@ x-tagGroups:
       - intro
       - environment
       - authentification
-      # - response_codes
+      - response_codes
       # - error_handling
   - name: Core Endpoints
     tags:
@@ -162,7 +161,7 @@ paths:
         
     # put
 
-    '/invoice/{invoiceID}':
+    '/invoice/{Id}':
     put:
       tags:
         - invoice
@@ -258,9 +257,6 @@ components:
         - source
       properties:
         id:             # id of invoice
-          externalDocs:
-            description: "Find more info here"
-            url: "https://example.com"
           description: Invoice ID
           allOf:
             - $ref: '#/components/schemas/Id'
@@ -367,9 +363,6 @@ components:
         - key
       properties:
         id:             # id of invoice
-          externalDocs:
-            description: "Find more info here"
-            url: "https://example.com"
           description: Invoice ID
           allOf:
             - $ref: '#/components/schemas/Id'
