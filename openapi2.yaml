@@ -139,7 +139,6 @@ paths:
     # put
 
     '/invoice/{invoiceId}':
-
     put:
       tags:
         - invoice
