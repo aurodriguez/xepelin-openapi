@@ -20,9 +20,6 @@ info:
   x-logo:
     url: 'https://i.ibb.co/3Nqv1FM/xepelin-logo.png'
     altText: Xep logo
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 
 tags:
   - name: intro
@@ -53,8 +50,8 @@ tags:
 
   - name: authentification
     x-displayName: Autentificación
-    description: |
-     La autentificación actualmente se realiza a través de una `api-key` insertada en el header.
+    description:
+      $ref: '#/components/securitySchemes/ApiKeyAuth'
 
   # - name: response_codes
   #   x-displayName: Codigos de Respuesta
@@ -73,7 +70,7 @@ tags:
   #   description: |
   #    Manejo de errores.
 
-  - name: pet
+  - name: invoice
     x-displayName: Facturas
     description: Envío y modificación de facturas.
 
@@ -87,10 +84,10 @@ x-tagGroups:
       # - error_handling
   - name: Core Endpoints
     tags:
-      - pet
+      - invoice
 
 paths:
-  /pet:   # pet
+  /invoice:   # pet
     # parameters:
       # - name: cookieParam
       #   in: cookie
@@ -102,7 +99,7 @@ paths:
 
     post:   # start post
       tags:
-        - pet
+        - invoice
       summary: Enviar nuevo documento
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
@@ -114,10 +111,10 @@ paths:
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
 
-      operationId: addPet 
+      operationId: addInvoice 
      
       requestBody:
-        $ref: '#/components/requestBodies/Pet'
+        $ref: '#/components/requestBodies/Invoice'
 
       responses:
         '200':
@@ -135,7 +132,7 @@ paths:
 
       security:
         - ApiKeyAuth: []
-        
+
       x-code-samples:
         - lang: 'C#'
           source: |
@@ -172,10 +169,10 @@ paths:
     
     put:
       tags:
-        - pet
+        - invoice
       summary: Modificar un documento existente
       description: ''
-      operationId: updatePet
+      operationId: updateInvoice
       responses:
         '200':
           description: Invoice ID Created
@@ -191,7 +188,7 @@ paths:
           description: Internal Server Error
       
       security:
-        - api_key: []
+        - ApiKeyAuth: []
 
       x-code-samples:
         - lang: PHP
@@ -207,7 +204,7 @@ paths:
                 var_dump($e->getErrors());
             }
       requestBody:
-        $ref: '#/components/requestBodies/Pet'
+        $ref: '#/components/requestBodies/Invoice'
 
   # '/pet/{petId}':
   #   post:
@@ -306,8 +303,8 @@ components:
       format: int64
       readOnly: true
     
-    # Pet
-    Pet:
+    # Invoice
+    Invoice:
       type: object
       required:
         - businessRut
@@ -319,12 +316,12 @@ components:
         - issuedDate
         - source
       properties:
-        # id of pet
+        # id of invoice
         id:
           externalDocs:
             description: "Find more info here"
             url: "https://example.com"
-          description: Pet ID
+          description: Invoice ID
           allOf:
             - $ref: '#/components/schemas/Id'
         
@@ -428,14 +425,14 @@ components:
   # start requestBodies
 
   requestBodies:
-    Pet:
+    Invoice:
       content:
         application/json:
           schema:
             allOf:
-              - description: My Pet
-                title: Pettie
-              - $ref: '#/components/schemas/Pet'
+              - description: My Invoice
+                title: Invoicy
+              - $ref: '#/components/schemas/Invoice'
         # application/xml:
         #   schema:
         #     type: 'object'
@@ -445,25 +442,6 @@ components:
         #         description: hooray
       # description: Nueva factura que 
       required: true
-
-    # Pet:
-    #   content:
-    #     application/json:
-    #       schema:
-    #         allOf:
-    #           - description: My Pet
-    #             title: Pettie
-    #           - $ref: '#/components/schemas/Pet'
-    #     # application/xml:
-    #     #   schema:
-    #     #     type: 'object'
-    #     #     properties:
-    #     #       name:
-    #     #         type: string
-    #     #         description: hooray
-    #   # description: Nueva factura que 
-    #   required: true
-
     
   # end requestBodies
 
