@@ -73,7 +73,7 @@ tags:
   #   description: |
   #    Manejo de errores.
 
-  - name: pet
+  - name: invoice
     x-displayName: Facturas
     description: Envío y modificación de facturas.
 
@@ -87,16 +87,16 @@ x-tagGroups:
       # - error_handling
   - name: Core Endpoints
     tags:
-      - pet
+      - invoice
 
 paths:
-  /pet:   
+  /invoice:   
 
     # post 
-    
+
     post:   
       tags:
-        - pet
+        - invoice
       summary: Enviar nuevo documento
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
@@ -108,10 +108,10 @@ paths:
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
 
-      operationId: addPet 
+      operationId: addInvoice
      
       requestBody:
-        $ref: '#/components/requestBodies/Pet'
+        $ref: '#/components/requestBodies/Invoice'
 
       responses:
         '200':
@@ -164,10 +164,10 @@ paths:
 
     put:
       tags:
-        - pet
+        - invoice
       summary: Modificar un documento existente
       description: ''
-      operationId: updatePet
+      operationId: updateInvoice
       responses:
         '200':
           description: Invoice ID Created
@@ -199,7 +199,7 @@ paths:
                 var_dump($e->getErrors());
             }
       requestBody:
-        $ref: '#/components/requestBodies/Pet'
+        $ref: '#/components/requestBodies/Invoice'
 
   # '/pet/{petId}':
   #   post:
@@ -240,19 +240,19 @@ components:
 
   requestBodies:
 
-    Pet:
+    Invoice:
       content:
         application/json:
           schema:
             allOf:
-              - description: My Pet
-                title: Pettie
-              - $ref: '#/components/schemas/Pet'
+              - description: My Invoice
+                title: Invoicy
+              - $ref: '#/components/schemas/Invoice'
       required: true
 
   schemas:
 
-    Pet:
+    Invoice:
       type: object
       required:
         - businessRut
@@ -264,7 +264,7 @@ components:
         - issuedDate
         - source
       properties:
-        id:             # id of pet
+        id:             # id of invoice
           externalDocs:
             description: "Find more info here"
             url: "https://example.com"
