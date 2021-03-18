@@ -60,12 +60,12 @@ tags:
     x-displayName: Códigos de Respuesta
     description: |
 
-      | Codigo   | Mensaje                | Descripcion |
-      |----------|------------------------|--------------------|
-      | `400`    | Bad Request            | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
-      | `404`    | Not Found              | En el método PUT  sucede cuando el ID informado no existe. |
-      | `500`    | Internal Server Error  | Sucede cuando tenemos un error inesperado o no catalogado. |
-      | `200`    | Invoice ID Created     | Sucede cuando la solicitud enviada tuvo éxito. |
+      | Código   | Mensaje | Descripción |
+      |----------|----------------|---------|
+      | `400`    | Bad Request | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
+      | `404`    | Not Found | En el método PUT  sucede cuando el ID informado no existe. |
+      | `500`    | Internal Server Error | Sucede cuando tenemos un error inesperado o no catalogado. |
+      | `200`    | Invoice ID Created | Sucede cuando la solicitud enviada tuvo éxito. |
 
   # - name: error_handling
   #   x-displayName: Manejo de Errores
