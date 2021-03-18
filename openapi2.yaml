@@ -20,6 +20,9 @@ info:
   x-logo:
     url: 'https://i.ibb.co/3Nqv1FM/xepelin-logo.png'
     altText: Xep logo
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 
 tags:
   - name: intro
@@ -50,7 +53,8 @@ tags:
 
   - name: authentification
     x-displayName: Autentificación
-    description: Auth a traves de API key.
+    description: |
+     La autentificación actualmente se realiza a través de una `api-key` insertada en el header.
 
   # - name: response_codes
   #   x-displayName: Codigos de Respuesta
@@ -69,7 +73,7 @@ tags:
   #   description: |
   #    Manejo de errores.
 
-  - name: invoice
+  - name: pet
     x-displayName: Facturas
     description: Envío y modificación de facturas.
 
@@ -83,10 +87,10 @@ x-tagGroups:
       # - error_handling
   - name: Core Endpoints
     tags:
-      - invoice
+      - pet
 
 paths:
-  /invoice:   # pet
+  /pet:   # pet
     # parameters:
       # - name: cookieParam
       #   in: cookie
@@ -98,7 +102,7 @@ paths:
 
     post:   # start post
       tags:
-        - invoice
+        - pet
       summary: Enviar nuevo documento
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
@@ -110,10 +114,10 @@ paths:
         El siguiente es un `.json` del mensaje del envío de un nuevo documento desde el cliente hacia Xepelin con todos 
         los parámetros existentes actualmente.
 
-      operationId: addInvoice 
+      operationId: addPet 
      
       requestBody:
-        $ref: '#/components/requestBodies/Invoice'
+        $ref: '#/components/requestBodies/Pet'
 
       responses:
         '200':
@@ -129,8 +133,8 @@ paths:
         '500':
           description: Internal Server Error
 
-      # security:
-      #   - ApiKeyAuth: []
+      security:
+        - api_key: []
 
       x-code-samples:
         - lang: 'C#'
@@ -168,10 +172,10 @@ paths:
     
     put:
       tags:
-        - invoice
+        - pet
       summary: Modificar un documento existente
       description: ''
-      operationId: updateInvoice
+      operationId: updatePet
       responses:
         '200':
           description: Invoice ID Created
@@ -186,8 +190,8 @@ paths:
         '500':
           description: Internal Server Error
       
-      # security:
-      #   - ApiKeyAuth: []
+      security:
+        - api_key: []
 
       x-code-samples:
         - lang: PHP
@@ -203,7 +207,7 @@ paths:
                 var_dump($e->getErrors());
             }
       requestBody:
-        $ref: '#/components/requestBodies/Invoice'
+        $ref: '#/components/requestBodies/Pet'
 
   # '/pet/{petId}':
   #   post:
@@ -302,8 +306,8 @@ components:
       format: int64
       readOnly: true
     
-    # Invoice
-    Invoice:
+    # Pet
+    Pet:
       type: object
       required:
         - businessRut
@@ -315,12 +319,12 @@ components:
         - issuedDate
         - source
       properties:
-        # id of invoice
+        # id of pet
         id:
           externalDocs:
             description: "Find more info here"
             url: "https://example.com"
-          description: Invoice ID
+          description: Pet ID
           allOf:
             - $ref: '#/components/schemas/Id'
         
@@ -424,14 +428,14 @@ components:
   # start requestBodies
 
   requestBodies:
-    Invoice:
+    Pet:
       content:
         application/json:
           schema:
             allOf:
-              - description: My Invoice
-                title: Invoicy
-              - $ref: '#/components/schemas/Invoice'
+              - description: My Pet
+                title: Pettie
+              - $ref: '#/components/schemas/Pet'
         # application/xml:
         #   schema:
         #     type: 'object'
@@ -441,10 +445,29 @@ components:
         #         description: hooray
       # description: Nueva factura que 
       required: true
+
+    # Pet:
+    #   content:
+    #     application/json:
+    #       schema:
+    #         allOf:
+    #           - description: My Pet
+    #             title: Pettie
+    #           - $ref: '#/components/schemas/Pet'
+    #     # application/xml:
+    #     #   schema:
+    #     #     type: 'object'
+    #     #     properties:
+    #     #       name:
+    #     #         type: string
+    #     #         description: hooray
+    #   # description: Nueva factura que 
+    #   required: true
+
     
   # end requestBodies
 
-  # securitySchemes:
+  securitySchemes:
     # start securitySchemes
     # petstore_auth:
     #   description: |
@@ -457,19 +480,11 @@ components:
     #       scopes:
     #         'write:pets': modify pets in your account
     #         'read:pets': read your pets
-    # ApiKeyAuth:
-    #   description: >
-    #     For this sample, you can use the api key `special-key` to test the
-    #     authorization filters.
-    #   type: apiKey
-    #   in: header
-    #   name: X-API-Key
-
-    # api_key:
-    #   description: >
-    #     For this sample, you can use the api key `special-key` to test the
-    #     authorization filters.
-    #   type: apiKey
-    #   name: api_key
-    #   in: header 
+    api_key:
+      description: >
+        For this sample, you can use the api key `special-key` to test the
+        authorization filters.
+      type: apiKey
+      name: api_key
+      in: header 
     # end securitySchemes
