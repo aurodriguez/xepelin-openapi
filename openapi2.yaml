@@ -75,7 +75,7 @@ x-tagGroups:
       - invoice
 
 paths:
-  /invoice:   
+  /invoices:   
 
     # post 
 
@@ -138,9 +138,9 @@ paths:
         
     # put
 
-  /invoice/{invoiceId}:
+  /invoices/{ID}:
     parameters:
-    - name: invoiceId
+    - name: ID
       in: path
       description: ID of invoice that needs to be modified
       required: true
