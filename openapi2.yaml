@@ -60,7 +60,7 @@ tags:
     x-displayName: Códigos de Respuesta
     description: |
 
-      | Código   | Mensaje | Descripción |
+      |` Código `|` Mensaje          `|`Descripción                        `|
       |----------|----------------|---------|
       | `400`    | Bad Request | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
       | `404`    | Not Found | En el método PUT  sucede cuando el ID informado no existe. |
