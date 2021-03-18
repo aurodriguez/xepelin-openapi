@@ -109,8 +109,8 @@ tags:
     description: Envío y modificación de facturas.
 
 x-tagGroups:
-  - name: Información General
-    tags:
+  # - name: Información General
+  #   tags:
       # - intro
       # - environment
       # - authentification
