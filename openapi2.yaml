@@ -134,8 +134,8 @@ paths:
           description: Internal Server Error
 
       security:
-        - api_key: []
-
+        - ApiKeyAuth: []
+        
       x-code-samples:
         - lang: 'C#'
           source: |
