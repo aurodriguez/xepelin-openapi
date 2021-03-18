@@ -137,6 +137,14 @@ paths:
     # put
 
     '/invoice/{invoiceId}':
+    
+    parameters:
+      - schema:
+          type: integer
+        name: invoiceId
+        in: path
+        required: true
+
     put:
       tags:
         - invoice
