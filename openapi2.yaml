@@ -50,8 +50,7 @@ tags:
 
   - name: authentification
     x-displayName: Autentificación
-    description:
-      $ref: '#/components/securitySchemes/ApiKeyAuth'
+    description: Auth a traves de API key.
 
   # - name: response_codes
   #   x-displayName: Codigos de Respuesta
@@ -130,8 +129,8 @@ paths:
         '500':
           description: Internal Server Error
 
-      security:
-        - ApiKeyAuth: []
+      # security:
+      #   - ApiKeyAuth: []
 
       x-code-samples:
         - lang: 'C#'
@@ -187,8 +186,8 @@ paths:
         '500':
           description: Internal Server Error
       
-      security:
-        - ApiKeyAuth: []
+      # security:
+      #   - ApiKeyAuth: []
 
       x-code-samples:
         - lang: PHP
@@ -445,7 +444,7 @@ components:
     
   # end requestBodies
 
-  securitySchemes:
+  # securitySchemes:
     # start securitySchemes
     # petstore_auth:
     #   description: |
@@ -458,13 +457,13 @@ components:
     #       scopes:
     #         'write:pets': modify pets in your account
     #         'read:pets': read your pets
-    ApiKeyAuth:
-      description: >
-        For this sample, you can use the api key `special-key` to test the
-        authorization filters.
-      type: apiKey
-      in: header
-      name: X-API-Key
+    # ApiKeyAuth:
+    #   description: >
+    #     For this sample, you can use the api key `special-key` to test the
+    #     authorization filters.
+    #   type: apiKey
+    #   in: header
+    #   name: X-API-Key
 
     # api_key:
     #   description: >
