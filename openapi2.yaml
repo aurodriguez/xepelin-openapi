@@ -36,12 +36,12 @@ info:
 
     # Códigos de Respuesta
 
-      |` Código `|` Mensaje          `|`Descripción                        `|
+      | Código | Mensaje   |Descripción |
       |----------|----------------|---------|
-      | `400`    | Bad Request | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
-      | `404`    | Not Found | En el método PUT  sucede cuando el ID informado no existe. |
-      | `500`    | Internal Server Error | Sucede cuando tenemos un error inesperado o no catalogado. |
-      | `200`    | Invoice ID Created | Sucede cuando la solicitud enviada tuvo éxito. |
+      | :`400`    :| **Bad Request** |:Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
+      | :`404`   : | **Not Found** |:En el método PUT  sucede cuando el ID informado no existe. |
+      | :`500`    :| **Internal Server Error** | :Sucede cuando tenemos un error inesperado o no catalogado. |
+      |: `200`   : | **Invoice ID Created** |: Sucede cuando la solicitud enviada tuvo éxito. |
 
   version: 1.0.0
   title: Xepelin API Corps
@@ -57,66 +57,12 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 
 tags:
-  # - name: intro
-  #   x-displayName: Introducción
-  #   description: |
-  #     Xepelin cuenta con una API para clientes corporativos que permite a las empresas 
-  #     acceder a la información de las facturas, operaciones de factoring y confirming de 
-  #     forma segura y ágil. A través de nuestra API, los desarrolladores pueden acceder 
-  #     a **Endpoint Facturas Externas**, que te brinda la posibilidad de ingresar y guardar 
-  #     datos generales relacionados con la emisión de documentos fiscales como facturas o 
-  #     notas de crédito, estados, fechas y valores.
-      
-  #     También puedes modificar determinada información siempre que quieras según las 
-  #     necesidades que tengas para actualizar o modificar determinados datos.
-      
-  #     El objetivo de Xepelin con esta API es facilitar y ayudar a sus clientes en los 
-  #     procesos internos de una forma imperceptible, limpia y tecnológica.
-
-  # - name: environment
-  #   x-displayName: Ambiente
-  #   description: |
-  #     Xepelin ofrece actualmente dos entornos. Para generar sus claves para cada entorno, por favor, póngase en contacto con nosotros a suyai@xepelin.com y envíe las especificaciones correspondientes.
-      
-  #     | Ambiente     | Propósito   | URL       |
-  #     |-------------|:------------|-------------|
-  #     | **Sandbox**   | El entorno de sandbox está dedicado a las fases de prueba y desarrollo. En este entorno, puede enviar datos de prueba a todos los endpoints. | https://vzx7es13n7.execute-api.sa-east-1.amazonaws.com/staging/|
-  #     | **Produccion** | El entorno de producción está dedicado a interacciones en vivo con conexiones reales. | https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/ |
-
-  # - name: authentification
-  #   x-displayName: Autentificación
-  #   description: |
-  #    La autentificación actualmente se realiza a través de una `api-key` insertada en el header.
-
-  # - name: response_codes
-  #   x-displayName: Códigos de Respuesta
-  #   description: |
-
-  #     |` Código `|` Mensaje          `|`Descripción                        `|
-  #     |----------|----------------|---------|
-  #     | `400`    | Bad Request | Input que no corresponde al tipo requerido, no vienen todos los inputs obligatorios o viene el request vacío. |
-  #     | `404`    | Not Found | En el método PUT  sucede cuando el ID informado no existe. |
-  #     | `500`    | Internal Server Error | Sucede cuando tenemos un error inesperado o no catalogado. |
-  #     | `200`    | Invoice ID Created | Sucede cuando la solicitud enviada tuvo éxito. |
-
-  # - name: error_handling
-  #   x-displayName: Manejo de Errores
-  #   description: |
-  #    Manejo de errores.
-
   - name: invoice
     x-displayName: Facturas
     description: Envío y modificación de facturas.
 
 x-tagGroups:
-  # - name: Información General
-  #   tags:
-      # - intro
-      # - environment
-      # - authentification
-      # - response_codes
-      # - error_handling
-  - name: Core Endpoints
+  - name: Endpoints
     tags:
       - invoice
 
