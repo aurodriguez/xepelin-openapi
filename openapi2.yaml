@@ -173,11 +173,11 @@ paths:
       parameters:
         - name: invoiceID
           in: path
-          description: ID of pet that needs to be updated
+          description: ID of invoice that needs to be modified
           required: true
           schema:
             type: integer
-            format: int64
+            format: float
 
       requestBody:
         $ref: '#/components/requestBodies/ModifyInvoice'
