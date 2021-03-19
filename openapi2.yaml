@@ -7,6 +7,17 @@ servers:
     description: Production server
 
 info:
+
+  version: Beta
+  title: Xepelin API Docs
+  contact:
+    name: Contacto
+    email: hola@xepelin.com
+    url: 'https://www.xepelin.com/'
+  x-logo:
+    url: 'https://i.ibb.co/3Nqv1FM/xepelin-logo.png'
+    altText: Xep logo
+
   description: |
     Encuentra mas informacion sobre Xepelin en [http://www.xepelin.com](http://www.xepelin.com) 
     y sobre sus respectivas aplicaciones
@@ -51,18 +62,6 @@ info:
       |`404`    | ❌ **Not Found** - En el método PUT sucede cuando el ID informado no existe. |
       |`500`  | ❌ **Internal Server Error** - Error inesperado o no catalogado. |
 
-    
-
-  version: Beta
-  title: Xepelin API 
-  contact:
-    name: Contacto
-    email: suyai@xepelin.com
-    url: 'https://www.xepelin.com/'
-  x-logo:
-    url: 'https://i.ibb.co/3Nqv1FM/xepelin-logo.png'
-    altText: Xep logo
-
 tags:
   - name: invoice
     x-displayName: Facturas
@@ -76,9 +75,7 @@ x-tagGroups:
 
 paths:
   /invoices:   
-
     # post 
-
     post:   
       tags:
         - invoice
@@ -86,12 +83,9 @@ paths:
       description: |
         En este método puedes enviar información de origen perteneciente a tus facturas para crear e informar acerca 
         de un nuevo documento. 
-                
       operationId: addInvoice
-     
       requestBody:
         $ref: '#/components/requestBodies/Invoice'
-
       responses:
         '200':
           description: Invoice ID Created
@@ -107,6 +101,13 @@ paths:
           description: Internal Server Error
 
       x-code-samples:
+        - lang: cURL
+          source: |
+          'curl -i -X POST -H "Content-Type: application/json" -H "Accept: application/json" 
+          -H "x-api-key: 2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg" 
+          -d '{"businessRut": "33445566-K", "payerRut": "774433-6", "folio": 12345, "documentType": "33", "currency": "CLP", "totalAmount": 161600, "issuedDate": "2021-01-21", "limitDate": "2021-03-03", "paymentConfirmedDate": "2021-03-03", "xmlDte": "AQUI VA EL XML", "businessName": "Rogelio", "payerName": "Mwza", "source": "XEP"}' 
+          https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices
+
         - lang: 'C#'
           source: |
             PetStore.v1.Pet pet = new PetStore.v1.Pet();
