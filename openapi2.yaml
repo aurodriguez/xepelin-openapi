@@ -153,7 +153,7 @@ paths:
                   $headers = array(
                     'Content-Type: application/json',
                     'Accept: application/json',
-                    'x-api-key: 2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg',
+                    'x-api-key: YOUR_API_KEY',
                   );
                   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
                   $data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'; 
