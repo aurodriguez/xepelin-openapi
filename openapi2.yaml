@@ -109,10 +109,7 @@ paths:
           label: cURL
           source: |
           curl -i -X POST -H "Content-Type":" application/json" -H "Accept":" application/json"
-          -H ""x-api-key:" 2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg"
-          -d '{""businessRut"":" "33445566-K", "payerRut"":" "774433-6", "folio"":" 12345, "documentType"":" "33", "currency"":" "CLP", "totalAmount"":" 161600, "issuedDate"":" "2021-01-21", "limitDate"":" "2021-03-03", "paymentConfirmedDate"":" "2021-03-03", "xmlDte"":" "AQUI VA EL XML", "businessName"":" "Rogelio", "payerName"":" "Mwza", "source"":" "XEP"}'
-          https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices
-
+          
         - lang: PHP
           source: |
             $form = new \PetStore\Entities\Pet();
