@@ -107,8 +107,7 @@ paths:
 
         - lang: C
           label: cURL
-          source: |
-          curl -i -X POST -H "'Content-Type:' application/json" -H '"Accept:' application/json"
+          source: "curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json'"
 
         - lang: PHP
           source: |
