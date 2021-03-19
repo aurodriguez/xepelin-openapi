@@ -110,22 +110,26 @@ paths:
                   -H 'x-api-key: YOUR_API_KEY' \n
                   -d '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'\n
                   https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices"
-                  
+
         - lang: javascript
-          source: |
-               "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices'; \n\n 
-                var xhr = new XMLHttpRequest(); \n
-                xhr.open('POST', url); \n\n              
-                xhr.setRequestHeader('Content-Type', 'application/json'); \n
-                xhr.setRequestHeader('Accept', 'application/json'); \n 
-                xhr.setRequestHeader('x-api-key', 'YOUR_API_KEY'); \n\n
-                xhr.onreadystatechange = function () { \n
-                  if (xhr.readyState === 4) { \n
-                      console.log(xhr.status); \n
-                      console.log(xhr.responseText); \n
-                  }}; \n\n
-                var data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'; \n
-                xhr.send(data);"
+          source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices'; 
+
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('POST', url);              
+
+                  xhr.setRequestHeader('Content-Type', 'application/json'); 
+                  xhr.setRequestHeader('Accept', 'application/json');  
+                  xhr.setRequestHeader('x-api-key', 'YOUR_API_KEY'); 
+                
+                  xhr.onreadystatechange = function () { 
+                    if (xhr.readyState === 4) { 
+                        console.log(xhr.status); 
+                        console.log(xhr.responseText); 
+                    }}; 
+                  
+                  var data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'; \n
+                  
+                  xhr.send(data);"
 
         - lang: python
           source: |
@@ -140,16 +144,27 @@ paths:
             }
 
         - lang: PHP
-          source: |
-            $form = new \PetStore\Entities\Pet();
-            $form->setPetType("Dog");
-            $form->setName("Rex");
-            // set other fields
-            try {
-                $pet = $client->pets()->create($form);
-            } catch (UnprocessableEntityException $e) {
-                var_dump($e->getErrors());
-            }
+          source: "<?php
+                  $url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices';
+                  $curl = curl_init($url);
+                  curl_setopt($curl, CURLOPT_URL, $url);
+                  curl_setopt($curl, CURLOPT_POST, true);
+                  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                  $headers = array(
+                    'Content-Type: application/json',
+                    'Accept: application/json',
+                    'x-api-key: 2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg',
+                  );
+                  curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                  $data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'; 
+                  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                  //for debug only!
+                  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                  $resp = curl_exec($curl);
+                  curl_close($curl);
+                  var_dump($resp);
+                  ?>"
 
     # put
 
