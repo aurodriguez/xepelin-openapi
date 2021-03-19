@@ -104,15 +104,34 @@ paths:
 
         - lang: C
           label: cURL
-          source: "curl -i -X POST -H 'Content-Type: application/json' \n
+          source: "curl -i -X POST \n
+                  -H 'Content-Type: application/json' \n
                   -H 'Accept: application/json' \n
                   -H 'x-api-key: YOUR_API_KEY' \n
                   -d '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'\n
                   https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices"
-        - lang: JavaScript
-          source: console.log('Hello World');
+        - lang: javascript
+          source: |
+                var url = "https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices";
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", url);
+                
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("x-api-key", "2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg");
+                
+                xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      console.log(xhr.status);
+                      console.log(xhr.responseText);
+                  }};
+                
+                "var data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}';"
+                
+                xhr.send(data);
 
-        - lang: PHP
+        - lang: python
           source: |
             $form = new \PetStore\Entities\Pet();
             $form->setPetType("Dog");
@@ -123,7 +142,8 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
-        - lang: Python
+            
+        - lang: PHP
           source: |
             $form = new \PetStore\Entities\Pet();
             $form->setPetType("Dog");
