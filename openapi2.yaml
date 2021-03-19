@@ -155,7 +155,6 @@ paths:
           
           print(resp.status_code)"
 
-
         - lang: PHP
           source: "<?php \n
 
@@ -231,32 +230,56 @@ paths:
                   -H 'Accept: application/json' \n
                   -H 'x-api-key: YOUR_API_KEY' \n
                   -d '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'\n
-                  https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices"
+                  https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices"
+        
         - lang: JavaScript
-          source: console.log('Hello World');
+          source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5';\n
+              var xhr = new XMLHttpRequest();\n
+              xhr.open('PUT', url);\n
+              xhr.setRequestHeader('Content-Type', 'application/json'); \n
+              xhr.setRequestHeader('Accept', 'application/json');\n
+              xhr.onreadystatechange = function () {\n
+                if (xhr.readyState === 4) {\n
+                    console.log(xhr.status);\n
+                    console.log(xhr.responseText);\n
+                }};\n
+              var data = '{'corpID': 2233}';\n
+              xhr.send(data);"
 
         - lang: PHP
-          source: |
-            $form = new \PetStore\Entities\Pet();
-            $form->setPetType("Dog");
-            $form->setName("Rex");
-            // set other fields
-            try {
-                $pet = $client->pets()->create($form);
-            } catch (UnprocessableEntityException $e) {
-                var_dump($e->getErrors());
-            }
+          source: "import requests\n
+              from requests.structures import CaseInsensitiveDict\n
+              url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5'\n
+              headers = CaseInsensitiveDict()\n
+              headers['Content-Type'] = 'application/json'\n
+              headers['Accept'] = 'application/json'\n
+              headers['x-api-key'] = 'YOUR_API_KEY'\n
+              data = '{'corpID': 2233}'\n
+              resp = requests.put(url, headers=headers, data=data)\n
+              print(resp.status_code)"
+
         - lang: python
-          source: |
-            $form = new \PetStore\Entities\Pet();
-            $form->setPetType("Dog");
-            $form->setName("Rex");
-            // set other fields
-            try {
-                $pet = $client->pets()->create($form);
-            } catch (UnprocessableEntityException $e) {
-                var_dump($e->getErrors());
-            }
+          source: "<?php\n
+                  $url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5';\n
+                  $curl = curl_init($url);\n
+                  curl_setopt($curl, CURLOPT_URL, $url);\n
+                  curl_setopt($curl, CURLOPT_PUT, true);\n
+                  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n
+                  $headers = array(\n
+                    'Content-Type: application/json',\n
+                    'Accept: application/json',\n
+                    'x-api-key: YOUR_API_KEY',\n
+                  );\n
+                  curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);\n
+                  $data = '{'corpID': 2233}';\n
+                  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);\n
+                  //for debug only!\n
+                  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);\n
+                  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\n
+                  $resp = curl_exec($curl);\n
+                  curl_close($curl);\n
+                  var_dump($resp);\n
+                  ?>"
 
 components:
 
