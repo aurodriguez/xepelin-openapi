@@ -125,18 +125,18 @@ paths:
 
         - lang: javascript
           source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices';\n\n
-                  var xhr = new XMLHttpRequest();\n
-                  xhr.open('POST', url);\n\n            
-                  xhr.setRequestHeader('Content-Type', 'application/json');\n
-                  xhr.setRequestHeader('Accept', 'application/json');\n
-                  xhr.setRequestHeader('x-api-key', 'YOUR_API_KEY');\n\n
-                  xhr.onreadystatechange = function () {\n
-                    if (xhr.readyState === 4) {\n
-                        console.log(xhr.status);\n
-                        console.log(xhr.responseText);\n
-                    }};\n\n
-                  var data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}';\n\n
-                  xhr.send(data);"
+          var xhr = new XMLHttpRequest();\n
+          xhr.open('POST', url);\n\n            
+          xhr.setRequestHeader('Content-Type', 'application/json');\n
+          xhr.setRequestHeader('Accept', 'application/json');\n
+          xhr.setRequestHeader('x-api-key', 'YOUR_API_KEY');\n\n
+          xhr.onreadystatechange = function () {\n
+            if (xhr.readyState === 4) {\n
+                console.log(xhr.status);\n
+                console.log(xhr.responseText);\n
+            }};\n\n
+          var data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}';\n\n
+          xhr.send(data);"
 
         - lang: python
           source: "import requests \n
