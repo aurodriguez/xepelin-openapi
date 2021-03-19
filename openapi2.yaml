@@ -229,7 +229,20 @@ paths:
           source: "curl -i -X POST -H 'Content-Type: application/json' \n
                   -H 'Accept: application/json' \n
                   -H 'x-api-key: YOUR_API_KEY' \n
-                  -d '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'\n
+                  -d '{\n
+                    'businessRut': '33445566-K', \n
+                    'payerRut': '774433-6', \n
+                    'folio': 12345, \n
+                    'documentType': '33', \n
+                    'currency': 'CLP', \n
+                    'totalAmount': 161600, \n
+                    'issuedDate': '2021-01-21', \n
+                    'limitDate': '2021-03-03', \n
+                    'paymentConfirmedDate': '2021-03-03', \n
+                    'xmlDte': 'AQUI VA EL XML', \n
+                    'businessName': 'Rogelio', \n
+                    'payerName': 'Mwza', \n
+                    'source': 'XEP'}'\n
                   https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices"
         
         - lang: JavaScript
