@@ -108,8 +108,8 @@ paths:
         - lang: C
           label: cURL
           source: |
-          curl -i -X POST -H "Content-Type":" application/json" -H "Accept":" application/json"
-          
+          curl -i -X POST -H ""Content-Type:" application/json" -H ""Accept:" application/json"
+
         - lang: PHP
           source: |
             $form = new \PetStore\Entities\Pet();
