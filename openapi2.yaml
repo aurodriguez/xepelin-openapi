@@ -260,7 +260,7 @@ paths:
               xhr.send(data);"
 
         - lang: python
-          source:
+          source: |
           "import requests\n\n
           from requests.structures import CaseInsensitiveDict\n
           url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5'\n\n
