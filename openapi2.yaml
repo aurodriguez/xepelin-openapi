@@ -226,60 +226,33 @@ paths:
       x-code-samples:
         - lang: C
           label: cURL
-          source: "curl -i -X POST -H 'Content-Type: application/json' \n
-                  -H 'Accept: application/json' \n
-                  -H 'x-api-key: YOUR_API_KEY' \n
-                  -d '{\n
-                    'businessRut': '33445566-K', \n
-                    'payerRut': '774433-6', \n
-                    'folio': 12345, \n
-                    'documentType': '33', \n
-                    'currency': 'CLP', \n
-                    'totalAmount': 161600, \n
-                    'issuedDate': '2021-01-21', \n
-                    'limitDate': '2021-03-03', \n
-                    'paymentConfirmedDate': '2021-03-03', \n
-                    'xmlDte': 'AQUI VA EL XML', \n
-                    'businessName': 'Rogelio', \n
-                    'payerName': 'Mwza', \n
-                    'source': 'XEP'}'\n
-                  https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices"
+          source: "curl -i -X POST\n-H 'Content-Type: application/json'\n-H 'Accept: application/json'\n-H 'x-api-key: YOUR_API_KEY'\n-d '{\n'businessRut': '33445566-K',\n'payerRut': '774433-6',\n'folio': 12345,\n'documentType': '33',\n'currency': 'CLP',\n'totalAmount': 161600,\n'issuedDate': '2021-01-21',\n'limitDate': '2021-03-03',\n'paymentConfirmedDate': '2021-03-03',\n'xmlDte': 'AQUI VA EL XML',\n'businessName': 'Rogelio',\n'payerName': 'Mwza', \n'source': 'XEP'}'\nhttps://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices\n"
         
         - lang: JavaScript
-          source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5';\n
-              var xhr = new XMLHttpRequest();\n
-              xhr.open('PUT', url);\n
-              xhr.setRequestHeader('Content-Type', 'application/json'); \n
-              xhr.setRequestHeader('Accept', 'application/json');\n
-              xhr.onreadystatechange = function () {\n
-                if (xhr.readyState === 4) {\n
-                    console.log(xhr.status);\n
-                    console.log(xhr.responseText);\n
-                }};\n
-              var data = '{'corpID': 2233}';\n
-              xhr.send(data);"
+          label: js
+          source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5';\nvar xhr = new XMLHttpRequest();\n\nxhr.open('PUT', url);\nxhr.setRequestHeader('Content-Type', 'application/json'); \nxhr.setRequestHeader('Accept', 'application/json');\n\nxhr.onreadystatechange = function () {\nif (xhr.readyState === 4) {\nconsole.log(xhr.status);\nconsole.log(xhr.responseText);\n}};\n\nvar data = '{'corpID': 2233}';\nxhr.send(data)\n;"
 
         - lang: python
-          source: "import requests\n\nfrom requests.structures import CaseInsensitiveDict\nurl = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5'\n\nheaders = CaseInsensitiveDict()\nheaders['Content-Type'] = 'application/json'\nheaders['Accept'] = 'application/json'\nheaders['x-api-key'] = 'YOUR_API_KEY'\n\ndata = '{'corpID': 2233}'\nresp = requests.put(url, headers=headers, data=data)\nprint(resp.status_code)"
+          source: "import requests\n\nfrom requests.structures import CaseInsensitiveDict\nurl = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5'\n\nheaders = CaseInsensitiveDict()\nheaders['Content-Type'] = 'application/json'\nheaders['Accept'] = 'application/json'\nheaders['x-api-key'] = 'YOUR_API_KEY'\n\ndata = '{'corpID': 2233}'\nresp = requests.put(url, headers=headers, data=data)\nprint(resp.status_code)\n"
 
         - lang: PHP
           source: "<?php\n
                   $url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices/5';\n
-                  $curl = curl_init($url);\n
+                  $curl = curl_init($url);\n\n
                   curl_setopt($curl, CURLOPT_URL, $url);\n
                   curl_setopt($curl, CURLOPT_PUT, true);\n
-                  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n
+                  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n\n
                   $headers = array(\n
                     'Content-Type: application/json',\n
                     'Accept: application/json',\n
                     'x-api-key: YOUR_API_KEY',\n
-                  );\n
+                  );\n\n
                   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);\n
                   $data = '{'corpID': 2233}';\n
-                  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);\n
+                  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);\n\n
                   //for debug only!\n
                   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);\n
-                  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\n
+                  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\n\n
                   $resp = curl_exec($curl);\n
                   curl_close($curl);\n
                   var_dump($resp);\n
