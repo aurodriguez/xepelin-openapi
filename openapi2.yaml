@@ -109,68 +109,33 @@ paths:
 
         - lang: javascript
           label: js
-          source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices';\n\n
-var xhr = new XMLHttpRequest();\n
-xhr.open('POST', url);\n\n            
-xhr.setRequestHeader('Content-Type', 'application/json');\n
-xhr.setRequestHeader('Accept', 'application/json');\n
-xhr.setRequestHeader('x-api-key', 'YOUR_API_KEY');\n\n
-xhr.onreadystatechange = function () {\n
-  if (xhr.readyState === 4) {\n
-      console.log(xhr.status);\n
-      console.log(xhr.responseText);\n
-  }};\n\n
-var data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}';\n\n
-xhr.send(data);\n\n"
+          source: "var url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices';\n\nvar xhr = new XMLHttpRequest();\nxhr.open('POST', url);\n\n            xhr.setRequestHeader('Content-Type', 'application/json');\nxhr.setRequestHeader('Accept', 'application/json');\nxhr.setRequestHeader('x-api-key', 'YOUR_API_KEY');\n\nxhr.onreadystatechange = function () {\nif (xhr.readyState === 4) {\nconsole.log(xhr.status);\nconsole.log(xhr.responseText);\n}};\n\nvar data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}';\n\nxhr.send(data);\n\n"
 
         - lang: python
-          source: "import requests \n
-          from requests.structures import CaseInsensitiveDict\n
-                  
-          url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices'\n
-                  
-          headers = CaseInsensitiveDict()\n
-          headers['Content-Type'] = 'application/json'\n
-          headers['Accept'] = 'application/json'\n
-          headers['x-api-key'] = '2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg'\n
-          
-          data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'\n
-          
-          resp = requests.post(url, headers=headers, data=data)\n
-          
-          print(resp.status_code)"
+          source: "import requests \n\nfrom requests.structures import CaseInsensitiveDict\nurl = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/prod/invoices'\n\nheaders = CaseInsensitiveDict()\nheaders['Content-Type'] = 'application/json'\nheaders['Accept'] = 'application/json'\nheaders['x-api-key'] = '2mc60iuNkt4Gio1GlCwSL42r6uA198mm7lkDuifg'\n\n          data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'\nresp = requests.post(url, headers=headers, data=data)\nprint(resp.status_code)\n\n"
 
         - lang: PHP
           source: "<?php \n
-
                   $url = 'https://1owlwqjmrh.execute-api.sa-east-1.amazonaws.com/staging/invoices';\n
-                  
-                  $curl = curl_init($url);\n
+                  $curl = curl_init($url);\n\n
                   curl_setopt($curl, CURLOPT_URL, $url);\n
                   curl_setopt($curl, CURLOPT_POST, true);\n
-                  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n
-                  
+                  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n\n
                   $headers = array( \n
                     'Content-Type: application/json',\n
                     'Accept: application/json',\n
                     'x-api-key: YOUR_API_KEY',\n
-                  );\n
-
+                  );\n\n
                   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);\n
-                  
                   $data = '{'businessRut': '33445566-K', 'payerRut': '774433-6', 'folio': 12345, 'documentType': '33', 'currency': 'CLP', 'totalAmount': 161600, 'issuedDate': '2021-01-21', 'limitDate': '2021-03-03', 'paymentConfirmedDate': '2021-03-03', 'xmlDte': 'AQUI VA EL XML', 'businessName': 'Rogelio', 'payerName': 'Mwza', 'source': 'XEP'}'; \n
-                  
-                  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);\n
-                  
+                  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);\n\n
                   //for debug only!\n
                   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);\n
-                  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\n
-                  
+                  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\n\n
                   $resp = curl_exec($curl);\n
                   curl_close($curl);\n
                   var_dump($resp);\n
-
-                  ?>"
+                  ?>\n\n"
 
     # put
 
@@ -241,7 +206,7 @@ xhr.send(data);\n\n"
                   $resp = curl_exec($curl);\n
                   curl_close($curl);\n
                   var_dump($resp);\n
-                  ?>"
+                  ?>\n\n"
 
 components:
 
