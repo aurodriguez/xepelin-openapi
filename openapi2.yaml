@@ -27,16 +27,9 @@ info:
     # Introducción
 
       Xepelin cuenta con una API para clientes que permite a las empresas 
-      acceder a la información de las facturas, operaciones de factoring y confirming de 
+      administrar la información de las facturas, operaciones de factoring y confirming de 
       forma segura y ágil. El objetivo de Xepelin con esta API es facilitar y ayudar a 
       sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.
-
-      A través de nuestra API, los desarrolladores pueden acceder 
-      a **Endpoint Facturas Externas**, que te brinda la posibilidad de ingresar y guardar 
-      datos generales relacionados con la emisión de documentos fiscales como facturas o 
-      notas de crédito, estados, fechas y valores.También se puede modificar determinada 
-      información siempre que quieras según las necesidades que tengas para actualizar o 
-      modificar determinados datos.
       
     # Ambiente
 
@@ -65,8 +58,12 @@ info:
 tags:
   - name: invoice
     x-displayName: Facturas
-    description: Envío y modificación de facturas
-    # insertar imagen de facturas
+    description: |
+    A través de nuestra API, los desarrolladores pueden acceder a **Endpoint Facturas Externas**, 
+    que te brinda la posibilidad de ingresar y guardar datos generales relacionados con la 
+    emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores. 
+    También se puede modificar determinada información siempre que quieras según las necesidades 
+    que tengas para actualizar o modificar determinados datos.
 
 x-tagGroups:
   - name: Endpoints
