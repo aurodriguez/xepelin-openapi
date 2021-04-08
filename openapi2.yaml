@@ -19,7 +19,7 @@ info:
     altText: Xep logo
 
   description: |
-    Encuentra mas informacion sobre Xepelin en [http://www.xepelin.com](http://www.xepelin.com) 
+    Encuentra mas informacion sobre Xepelin en [xepelin.com](https://www.xepelin.com) 
     y sobre sus respectivas aplicaciones
     - [App Corporativos](http://corps.xepelin.com) 
     - [App PYMES](http://app.xepelin.com) 
@@ -57,7 +57,7 @@ info:
 tags:
   - name: invoice
     x-displayName: Facturas
-    description: A través de nuestra API, los desarrolladores pueden acceder a **Endpoint Facturas**, que te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores. También se puede modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
+    description: A través de nuestra API, los desarrolladores pueden acceder al *Endpoint Facturas*, que permite ingresar y actualizar estados, fechas y valores de DTEs (Documentos Tributarios Electrónicos) como Facturas Electrónicas, Facturas Extentas electrónicas o Notas de Crédito.
 
 x-tagGroups:
   - name: Endpoints
