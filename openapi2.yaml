@@ -57,7 +57,7 @@ info:
 tags:
   - name: invoice
     x-displayName: Facturas
-    description: A través de nuestra API, los desarrolladores pueden acceder al *Endpoint Facturas*, que permite ingresar y actualizar estados, fechas y valores de DTEs (Documentos Tributarios Electrónicos) como Facturas Electrónicas, Facturas Extentas electrónicas o Notas de Crédito.
+    description: A través de nuestra API, los desarrolladores pueden acceder al **Endpoint Facturas**, que permite ingresar y actualizar estados, fechas y valores de DTEs (Documentos Tributarios Electrónicos) como Facturas Electrónicas, Facturas Extentas electrónicas o Notas de Crédito.
 
 x-tagGroups:
   - name: Endpoints
