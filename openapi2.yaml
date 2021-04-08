@@ -57,7 +57,7 @@ info:
 tags:
   - name: invoice
     x-displayName: Facturas
-    description: A través de nuestra API, los desarrolladores pueden acceder a **Endpoint Facturas Externas**, que te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores. También se puede modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
+    description: A través de nuestra API, los desarrolladores pueden acceder a **Endpoint Facturas**, que te brinda la posibilidad de ingresar y guardar datos generales relacionados con la emisión de documentos fiscales como facturas o notas de crédito, estados, fechas y valores. También se puede modificar determinada información siempre que quieras según las necesidades que tengas para actualizar o modificar determinados datos.
 
 x-tagGroups:
   - name: Endpoints
