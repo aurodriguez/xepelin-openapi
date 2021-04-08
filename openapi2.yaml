@@ -26,11 +26,10 @@ info:
 
     # Introducción
 
-      Xepelin cuenta con una API para clientes que permite a las empresas 
-      administrar la información de las facturas, operaciones de factoring y confirming de 
-      forma segura y ágil. El objetivo de Xepelin con esta API es facilitar y ayudar a 
-      sus clientes en los procesos internos de una forma imperceptible, limpia y tecnológica.
-      
+      Xepelin crea esta API con el propósito de facilitar y ayudar a sus clientes 
+      en sus procesos permitiendo que envíen información y consulten datos de diversas 
+      fuentes de forma segura y ágil.
+            
     # Ambiente
 
       Xepelin ofrece actualmente dos entornos que se muestran en la siguiente tabla. 
